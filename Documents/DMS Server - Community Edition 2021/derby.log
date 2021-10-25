@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Mon Oct 25 12:19:40 IST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-017c-b636-3b72-000004e5fca0 
+on database directory /home/guju/Documents/DMS Server - Community Edition 2021/data/KRYSTALCE  with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@707f7052 
+Loaded from file:/home/guju/Documents/DMS%20Server%20-%20Community%20Edition%202021/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=15.0.1+9-18
+user.dir=/home/guju/Documents/DMS Server - Community Edition 2021
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

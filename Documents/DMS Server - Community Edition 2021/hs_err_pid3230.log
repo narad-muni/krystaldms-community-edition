@@ -1,0 +1,21 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f1aed9ab375, pid=3230, tid=3246
+#
+# JRE version: OpenJDK Runtime Environment (15.0.1+9) (build 15.0.1+9-18)
+# Java VM: OpenJDK 64-Bit Server VM (15.0.1+9-18, mixed mode, tiered, compressed oops, g1 gc, linux-amd64)
+# Problematic frame:
+# C  [libjimage.so+0x4375]
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h" (or dumping to /home/guju/Documents/DMS Server - Community Edition 2021/core.3230)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:+ShowCodeDetailsInExceptionMessages -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:46163 -javaagent:/home/guju/.eclipse/org.eclipse.platform_4.18.0_155965261_linux_gtk_x86_64/configuration/org.eclipse.osgi/400/0/.cp/lib/javaagent-shaded.jar -Dfile.encoding=UTF-8 com.primeleaf.krystal.KRYSTALServer
+
+Host: AMD Ryzen 5 3400G with Radeon Vega Graphics, 8 cores, 5G, 

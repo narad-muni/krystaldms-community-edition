@@ -1,0 +1,15 @@
+{
+	"PORT":"8085",
+	"MULTI_LOGIN":"n",
+	"ALLOW_MASTER_PASSWORD":"n",
+	"INACTIVE_TIMEOUT":"5",
+	"MASTER_PASSWORD":"KRYSTALDMS",
+	"ALLOW_PASSWORD_RESET":"y",
+	
+	"SMTP_HOST":"smtp.gmail.com",
+	"SMTP_TLS":"y",
+	"SMTP_PORT":"587",
+	"SMTP_USERNAME":"saumilsunilshahtechguru@gmail.com",
+	"SMTP_PASSWORD":"hbgsmhgvdqubsyey"
+
+}
