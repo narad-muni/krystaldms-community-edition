@@ -70,7 +70,7 @@ public class CancelDocumentCheckoutView extends WebView {
 		try {
 			printBreadCrumbs();
 			out.println("<div class=\"card   \">");
-			out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-unlock\"></i> Cancel Checkout</h4></div>");
+			out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-unlock\"></i> Cancel Checkout</div>");
 			out.println("<div class=\"card-body\">");
 			if(request.getAttribute(HTTPConstants.REQUEST_ERROR) != null){
 				printError((String)request.getAttribute(HTTPConstants.REQUEST_ERROR));

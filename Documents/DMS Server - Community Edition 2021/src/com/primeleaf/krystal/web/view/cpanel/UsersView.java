@@ -78,12 +78,12 @@ public class UsersView extends WebView {
 		
 		out.println("<div class=\"card   \">");
 		out.println("<div class=\"card-header\">");
-		out.println("<div class=\"row\">");
+		out.println("<div class=\"d-flex justify-content-between\">");
 		out.println("<div class=\"col-xs-6\">");
-		out.println("<h4><i class=\"bi bi-person  \"></i> Manage Users</h4>");
+		out.println("<i class=\"bi bi-person text-primary\"></i> Manage Users");
 		out.println("</div>");
 		out.println("<div class=\"col-xs-6 text-end\">");
-		out.println("<h4><a href=\"/cpanel/newuser\">Add User</a></h4>");
+		out.println("<a href=\"/cpanel/newuser\">Add User</a>");
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</div>");

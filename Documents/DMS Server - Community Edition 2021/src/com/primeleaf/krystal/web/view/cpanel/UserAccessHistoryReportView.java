@@ -65,7 +65,7 @@ public class UserAccessHistoryReportView extends WebView {
 
 		try{
 			out.println("<div class=\"card   \">");
-			out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-bar-chart\"></i> Access History</h4></div>");
+			out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-bar-chart\"></i> Access History</div>");
 			out.println("<div class=\"card-body\">");
 			
 			out.println("<form action=\"/cpanel/useraccesshistory\" autocomplete=\"off\" method=\"post\" id=\"frmReport\" class=\"form-horizontal\" accept-charset=\"utf-8\">");
@@ -77,7 +77,7 @@ public class UserAccessHistoryReportView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"userid\" class=\"col-sm-3 col-form-label\">User <span style='color:red'>*</span></label>");
 			out.println("<div class=\"col-sm-9\">");
-			out.println("<select id=\"userid\" name=\"userid\" class=\"form-control required\" title=\"Select User\">");
+			out.println("<select id=\"userid\" name=\"userid\" class=\"form-control form-select required\" title=\"Select User\">");
 			out.println("<option value=\"\">Select</option>");
 			ArrayList<User> userList = (ArrayList<User>) request.getAttribute("USERLIST");
 			int userId = 0;
@@ -121,7 +121,7 @@ public class UserAccessHistoryReportView extends WebView {
 			out.println("<hr/>");
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</form>");
@@ -132,7 +132,7 @@ public class UserAccessHistoryReportView extends WebView {
 
 			if(request.getAttribute("ACCESSHISTORY")!=null){
 				out.println("<div class=\"card   \">");
-				out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-clock\"></i> Access History Report</h4></div>");
+				out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-clock me-2\"></i> Access History Report</div>");
 				ArrayList<AuditLogRecord>  accessHistory = (ArrayList<AuditLogRecord>)request.getAttribute("ACCESSHISTORY");
 				if(accessHistory.size() > 0){
 					out.println("<div class=\"table-responsive\">");

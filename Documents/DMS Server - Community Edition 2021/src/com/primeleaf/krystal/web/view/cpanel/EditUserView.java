@@ -73,7 +73,7 @@ public class EditUserView extends WebView {
 		User user = (User)request.getAttribute("USER");
 		try {
 			out.println("<div class=\"card   \">");
-			out.println("<div class=\"card-header\"><h4><i class=\"bi bi-person \"></i> Edit User</h4></div>");
+			out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-person \"></i> Edit User</div>");
 			out.println("<div class=\"card-body\">");
 			out.println("<form action=\"/cpanel/edituser\" method=\"post\" id=\"frmEditUser\" class=\"form-horizontal\"  accept-charset=\"utf-8\">");
 
@@ -115,12 +115,10 @@ public class EditUserView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"radActive\" class=\"col-sm-3 col-form-label\">Active?</label>");
 			out.println("<div class=\"btn-group col-sm-9\" data-bs-toggle=\"buttons\">");
-			out.println("<label class=\"btn btn-sm btn-primary "); if(user.isActive()) {out.print(" active");} out.print("\">");
-			out.println("<input type=\"radio\" id=\"radActive1\" name=\"radActive\" value=\"Y\"");if( user.isActive()) {out.print(" checked");}out.print(">Yes");
-			out.println("</label>");
-			out.println("<label class=\"btn  btn-sm btn-primary "); if(!user.isActive()) { out.print(" active");} out.print("\">");
-			out.println("<input type=\"radio\" id=\"radActive2\" name=\"radActive\"  value=\"N\"");if(!user.isActive()) {out.print(" checked");}out.print(">No");
-			out.println("</label>");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radActive1\" name=\"radActive\" value=\"Y\"");if( user.isActive()) {out.print(" checked");}out.print(">");
+			out.println("<label for=\"radActive1\" class=\"btn btn-outline-dark\">Yes</label>");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radActive2\" name=\"radActive\"  value=\"N\"");if(!user.isActive()) {out.print(" checked");}out.print(">");
+			out.println("<label for=\"radActive2\" class=\"btn btn-outline-dark\">No</label>");
 			out.println("</div>");
 			out.println("</div>");
 
@@ -128,12 +126,10 @@ public class EditUserView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"radUserType\" class=\"col-sm-3 col-form-label\">User Type</label>");
 			out.println("<div class=\"btn-group col-sm-9\" data-bs-toggle=\"buttons\">");
-			out.println("<label class=\"btn btn-sm btn-primary "); if( User.USER_TYPE_ADMIN.equalsIgnoreCase(user.getUserType())) {out.print(" active");} out.print("\">");
-			out.println("<input type=\"radio\" id=\"radUserType1\" name=\"radUserType\"  value=\""+User.USER_TYPE_ADMIN+"\"");if( User.USER_TYPE_ADMIN.equalsIgnoreCase(user.getUserType())) {out.print(" checked");}out.print(">Administrator");
-			out.println("</label>");
-			out.println("<label class=\"btn btn-sm btn-primary ");	if( User.USER_TYPE_USER.equalsIgnoreCase(user.getUserType())) { out.print(" active");} out.print("\">");
-			out.println("<input type=\"radio\" id=\"radUserType2\" name=\"radUserType\"   value=\""+User.USER_TYPE_USER+"\"");	if( User.USER_TYPE_USER.equalsIgnoreCase(user.getUserType())) {out.print(" checked");}out.print(">User");  
-			out.println("</label>");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radUserType1\" name=\"radUserType\"  value=\""+User.USER_TYPE_ADMIN+"\"");if( User.USER_TYPE_ADMIN.equalsIgnoreCase(user.getUserType())) {out.print(" checked");}out.print(">");
+			out.println("<label for=\"radUserType1\" class=\"btn btn-outline-dark\">Administrator</label>");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radUserType2\" name=\"radUserType\"   value=\""+User.USER_TYPE_USER+"\"");	if( User.USER_TYPE_USER.equalsIgnoreCase(user.getUserType())) {out.print(" checked");}out.print(">");  
+			out.println("<label for=\"radUserType2\" class=\"btn btn-outline-dark\">User</label>");
 			out.println("</div>");
 			out.println("</div>");
 
@@ -142,7 +138,7 @@ public class EditUserView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
 			out.println("<input type=\"hidden\" name=\"userid\" value=\""+ user.getUserId() + "\">");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn  btn-sm btn-primary\">");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn  btn-sm btn-dark\">");
 			out.println("</div>");
 			out.println("</div>");
 

@@ -180,7 +180,9 @@ public class WebPageTemplate {
 			out.print("</div>");
 			out.print("</form>");
 			out.print("<ul class=\"navbar-nav ms-auto\">");
-			out.print("");
+			out.print("<li class=\"nav-item bg-primary "+cssClass+"\">");
+			out.print("<a class=\"nav-link text-white\" href=\"/console/newdocument\" title=\"Upload file\"><i class=\"bi bi-file-plus me-2 h5\"></i>Upload document</a>");
+			out.print("</li>");
 			out.print("<li class=\"nav-item bg-dark dropdown\">");
 			out.print("<a href=\"javascript:void(0);\" class=\"nav-link dropdown-toggle text-white\" data-bs-toggle=\"dropdown\" title=\"My Profile\" aria-expanded=\"false\">");
 			out.print("<i class=\"bi bi-person me-2 h5\"></i>");
@@ -210,7 +212,7 @@ public class WebPageTemplate {
 			out.print("<script>");
 			out.print("var minute = "+(ConfigParser.InactiveTimeout()/60)%60+"-1;");
 			out.print("var sec = 59;");
-			out.print("var hour = "+ConfigParser.InactiveTimeout()/360+";");
+			out.print("var hour = "+ConfigParser.InactiveTimeout()/3600+";");
 			out.print("var timeOutCounter = setInterval(function() {");
 			out.print("    document.getElementById(\"clock\").innerHTML = (\'0\'+hour).slice(-2) + \" : \" + (\'0\'+minute).slice(-2) + \" : \" + (\'0\'+sec).slice(-2);");
 			out.print("    sec--;");

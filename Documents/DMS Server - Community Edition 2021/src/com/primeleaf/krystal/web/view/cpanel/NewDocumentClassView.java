@@ -78,7 +78,7 @@ public class NewDocumentClassView extends WebView {
 		}
 		try {
 			out.println("<div class=\"card   \">");
-			out.println("<div class=\"card-header\"><h4><i class=\"bi bi-folder2-open \"></i> Add Document Class </h4></div>");
+			out.println("<div class=\"card-header\"><i class=\"bi bi-folder2-open text-primary\"></i> Add Document Class</div>");
 			out.println("<div class=\"card-body\">");
 			
 			out.println("<form action=\"/cpanel/newdocumentclass\" method=\"post\" id=\"frmNewDocumentClass\" class=\"form-horizontal\">");
@@ -105,19 +105,19 @@ public class NewDocumentClassView extends WebView {
 			
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"txtExpiryPeriod\" class=\"col-sm-3 col-form-label\">Default Expiry Period <span style='color:red'>*</span></label>");
-			out.println("<div class=\"col-sm-1\"><input type=\"text\" id=\"txtExpiryPeriod\" name=\"txtExpiryPeriod\"  class=\"required form-control digits range\" min=\"0\" max=\"9999\" title=\"Please enter valid expiry period\" value=\"0\" maxlength=\"4\"></div>" );
-			out.println("<div class=\"col-sm-8\">Days</div>");
+			out.println("<div class=\"col-sm-8\"><input type=\"text\" id=\"txtExpiryPeriod\" name=\"txtExpiryPeriod\"  class=\"required form-control digits range\" min=\"0\" max=\"9999\" title=\"Please enter valid expiry period\" value=\"0\" maxlength=\"4\"></div>" );
+			out.println("<div class=\"col-sm-1 d-flex align-items-center\">Days</div>");
 			out.println("</div>");
 			
 			
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"radActive\" class=\"col-sm-3 col-form-label\">Active ?</label>");
 			out.println("<div class=\"btn-group col-sm-9\" data-bs-toggle=\"buttons\">");
-			out.println("<label class=\"btn  btn-sm  btn-primary active\">");
-			out.println("<input type=\"radio\" id=\"radActive1\" name=\"radActive\" value=\"Y\" checked>Yes");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radActive1\" name=\"radActive\" value=\"Y\" checked>");
+			out.println("<label for=\"radActive1\" class=\"btn btn-outline-dark\">Yes");
 			out.println("</label>");
-			out.println("<label class=\"btn btn-sm btn-primary\">");
-			out.println("<input type=\"radio\" id=\"radActive2\" name=\"radActive\"  value=\"N\">No");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radActive2\" name=\"radActive\"  value=\"N\">");
+			out.println("<label for=\"radActive2\" class=\"btn btn-outline-dark\">No");
 			out.println("</label>");
 			out.println("</div>");
 			out.println("</div>");
@@ -125,11 +125,11 @@ public class NewDocumentClassView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"radRevisionControl\" class=\"col-sm-3 col-form-label\">Enable Version Control?</label>");
 			out.println("<div class=\"btn-group col-sm-9\" data-bs-toggle=\"buttons\">");
-			out.println("<label class=\"btn btn-sm  btn-primary active\">");
-			out.println("<input type=\"radio\" id=\"radRevisionControl1\" name=\"radRevisionControl\" value=\"Y\" checked>Yes");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radRevisionControl1\" name=\"radRevisionControl\" value=\"Y\" checked>");
+			out.println("<label for=\"radRevisionControl1\" class=\"btn btn-outline-dark\">Yes");
 			out.println("</label>");
-			out.println("<label class=\"btn btn-sm  btn-primary\">");
-			out.println("<input type=\"radio\" id=\"radRevisionControl2\" name=\"radRevisionControl\"  value=\"N\">No");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radRevisionControl2\" name=\"radRevisionControl\"  value=\"N\">");
+			out.println("<label for=\"radRevisionControl2\" class=\"btn btn-outline-dark\">No");
 			out.println("</label>");
 			out.println("</div>");
 			out.println("</div>");
@@ -137,7 +137,7 @@ public class NewDocumentClassView extends WebView {
 			out.println("<hr/>");
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 			out.println("</div>");
 			out.println("</div>");
 

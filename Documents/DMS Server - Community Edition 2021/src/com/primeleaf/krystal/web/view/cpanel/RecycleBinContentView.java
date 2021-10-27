@@ -93,13 +93,13 @@ public class RecycleBinContentView extends WebView {
 			
 			out.println("<div class=\"row\">");
 			out.println("<div class=\"col-sm-6\">");
-			out.println("<h4><i class=\"bi  bi-trash\"></i> ");
+			out.println("<i class=\"bi text-primary bi-trash\"></i> ");
 			out.println(StringEscapeUtils.escapeHtml4(documentClass.getClassName())+" - ");
 			out.println("<small>"+StringEscapeUtils.escapeHtml4(documentClass.getClassDescription())+"</small>");
 			out.println("</div>");//col-sm-6
 			
 			out.println("<div class=\"col-sm-6 text-end\">");
-			out.println("<h4><i class=\"bi bi-file-earmark \"></i>  View Documents</h4>");
+			out.println("<i class=\"bi text-primary bi-file-earmark \"></i>  View Documents");
 			out.println("</div>");//col-sm-6
 			out.println("</div>");//row
 			out.println("</div>");//card-header

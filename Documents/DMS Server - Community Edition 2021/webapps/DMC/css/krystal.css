@@ -11,6 +11,11 @@
        url('./fonts/open-sans-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('./fonts/open-sans-v20-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
 }
+
+.darkMode {
+	filter:invert(1);
+}
+
 .help-block{
 	color:red;
 	font-weight:500;

@@ -43,8 +43,8 @@ public class ChangeUserPasswordView extends WebView {
 	}
 	private void printChangeUserPasswordForm() throws Exception{
 		out.println("<div class=\"modal-header\">");
+		out.println("<h4 class=\"modal-title\" id=\"myModalLabel\"><i class=\"bi text-primary bi-key\"></i> Change Password</h4>");
 		out.println("<button type=\"button\" class=\"btn\" data-bs-dismiss=\"modal\" aria-hidden=\"true\"><i class=\"bi-x-circle\"></i></button>");
-		out.println("<h4 class=\"modal-title\" id=\"myModalLabel\"><i class=\"bi bi-key\"></i> Change Password</h4>");
 		out.println("</div>");
 		out.println("<div class=\"modal-body\">");
 		User user = (User) request.getAttribute("USER");
@@ -67,14 +67,20 @@ public class ChangeUserPasswordView extends WebView {
 		out.println("<div class=\"mb-3 row\">");
 		out.println("<label for=\"txtNewPassword\" class=\"col-sm-3 col-form-label\">New Password <span style='color:red'>*</span></label>");
 		out.println("<div class=\"col-sm-9\">");
+		out.println("<div class=\"form-floating\">");
 		out.println("<input type=\"password\" maxlength=\"30\" name=\"txtNewPassword\" id=\"txtNewPassword\" class=\"form-control required complexPassword\" placeholder=\"New Password\" minlength=\"8\" autocomplete=\"off\">");
+		out.println("<label for=\"txtNewPassword\"><i class=\"bi text-primary bi-key me-2\"></i>New Password</label>");
+		out.println("</div>");
 		out.println("</div>");
 		out.println("</div>");
 
 		out.println("<div class=\"mb-3 row\">");
 		out.println("<label for=\"txtConfirmPassword\" class=\"col-sm-3 col-form-label\">Confirm Password <span style='color:red'>*</span></label>");
 		out.println("<div class=\"col-sm-9\">");
+		out.println("<div class=\"form-floating\">");
 		out.println("<input  type=\"password\" maxlength=\"30\" name=\"txtConfirmPassword\" id=\"txtConfirmPassword\" class=\"form-control required\" equalTo= \"#txtNewPassword\" placeholder=\"Confirm Password\" autocomplete=\"off\" title=\"Password must match\">");
+		out.println("<label for=\"txtConfirmPassword\"><i class=\"bi text-primary bi-key me-2\"></i>Confirm Password</label>");
+		out.println("</div>");
 		out.println("</div>");
 		out.println("</div>");
 
@@ -82,13 +88,13 @@ public class ChangeUserPasswordView extends WebView {
 		out.println("<div class=\"mb-3 row\">");
 		out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
 		out.println("<input type=\"hidden\"  value=\""+user.getUserId()+"\" name=\"userid\"/>");
-		out.println("<input class=\"btn btn-sm btn-primary\" type=\"submit\"  value=\"Submit\" name=\"btnSubmit\"/>&nbsp;");
+		out.println("<input class=\"btn btn-sm btn-dark\" type=\"submit\"  value=\"Submit\" name=\"btnSubmit\"/>&nbsp;");
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</form>");
 		out.println("</div>");//modal-body
 		out.println("<div class=\"modal-footer\">");
-		out.println("<button type=\"button\" class=\"btn btn-sm btn-primary\" data-bs-dismiss=\"modal\">Close</button>");
+		out.println("<button type=\"button\" class=\"btn btn-sm btn-dark\" data-bs-dismiss=\"modal\">Close</button>");
 		out.println("</div>");
 	}
 }

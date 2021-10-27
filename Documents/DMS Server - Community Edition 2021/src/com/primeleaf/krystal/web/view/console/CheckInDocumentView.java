@@ -69,8 +69,8 @@ public class CheckInDocumentView extends WebView {
 		}
 		if(document != null){
 			try {
-				out.println("<div class=\"card   \">");
-				out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-arrow-right\"></i> Check In - "+ documentClass.getClassName() +"</h4></div>");
+				out.println("<div class=\"card\">");
+				out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-arrow-right\"></i> Check In - "+ documentClass.getClassName() +"</div>");
 				out.println("<div class=\"card-body\">");
 
 				out.println("<form action=\"/console/checkindocument\" method=\"post\" id=\"frmCheckInDocument\" class=\"form-horizontal\" enctype=\"multipart/form-data\" accept-charset=\"utf-8\">");
@@ -83,7 +83,7 @@ public class CheckInDocumentView extends WebView {
 				out.println("<div class=\"mb-3 row\">");
 				out.println("<label for=\"fileDocument\" class=\"col-sm-3 col-form-label\">Select Document <span style='color:red'>*</span></label>");
 				out.println("<div class=\"col-sm-9\">");
-				out.println("<input type=\"file\" name=\"fileDocument\" class=\"required checkExtension\" title=\"Select document of type " + document.getExtension()  + " to check-in\">");
+				out.println("<input type=\"file\" name=\"fileDocument\" class=\"required form-control checkExtension\" title=\"Select document of type " + document.getExtension()  + " to check-in\">");
 				out.println("</div>");
 				out.println("</div>");
 
@@ -101,19 +101,25 @@ public class CheckInDocumentView extends WebView {
 					value = StringEscapeUtils.escapeHtml4(value);
 					
 					if(indexDefinition.getIndexType().equals(IndexDefinition.INDEXTYPE_DATE)){
-						out.println("<div class=\"col-sm-2\">");
+						out.println("<div class=\"col-sm-9\">");
 						out.println("<div class=\"input-group\">");
-						out.println("<input type=\"text\" class=\"shortdate isdate form-control "+ required +"\" size=\""+indexDefinition.getIndexMaxLength()+"\" name=\""+indexDefinition.getIndexColumnName()+"\" id=\""+indexDefinition.getIndexColumnName()+"\" value=\""+value+"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"  cid=\""+documentClass.getClassId()+"\">");
+						out.println("<input autocomplete=\"off\" type=\"text\" class=\"shortdate isdate form-control "+ required +"\" size=\""+indexDefinition.getIndexMaxLength()+"\" name=\""+indexDefinition.getIndexColumnName()+"\" id=\""+indexDefinition.getIndexColumnName()+"\" value=\""+value+"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"  cid=\""+documentClass.getClassId()+"\">");
 						out.println("<span class=\"input-group-text\"><i class=\"bi bi-calendar-date\"></i></span>");
 						out.println("</div>");
 						out.println("</div>");
 					}else if(indexDefinition.getIndexType().equals(IndexDefinition.INDEXTYPE_NUMBER)){
 						out.println("<div class=\"col-sm-9\">");
+						out.println("<div class=\"input-group\">");
 						out.println("<input type=\"text\" class=\"number  form-control "+ required +" autocomplete\"  size=\""+indexDefinition.getIndexMaxLength()+"\"  id=\""+indexDefinition.getIndexColumnName()+"\" name=\""+indexDefinition.getIndexColumnName()+"\" value=\""+value+"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"   cid=\""+documentClass.getClassId()+"\">");
+						out.println("<span class=\"input-group-text\"><i class=\"bi bi-hash\"></i></span>");
+						out.println("</div>");
 						out.println("</div>");
 					}else {
 						out.println("<div class=\"col-sm-9\">");
+						out.println("<div class=\"input-group\">");
 						out.println("<input type=\"text\"  class=\"autocomplete form-control "+ required +" \" id=\""+indexDefinition.getIndexColumnName()+"\"  name=\""+indexDefinition.getIndexColumnName()+"\" value=\""+value+"\"maxlength=\""+indexDefinition.getIndexMaxLength()+"\"  cid=\""+documentClass.getClassId()+"\">");
+						out.println("<span class=\"input-group-text\"><i class=\"bi bi-type\"></i></span>");
+						out.println("</div>");
 						out.println("</div>");
 					}
 					out.println("</div>");
@@ -131,11 +137,11 @@ public class CheckInDocumentView extends WebView {
 				out.println("<div class=\"mb-3 row\">");
 				out.println("<label for=\"version\" class=\"col-sm-3 col-form-label\">Version</label>");
 				out.println("<div class=\"btn-group col-sm-9\" data-bs-toggle=\"buttons\">");
-				out.println("<label class=\"btn  btn-sm btn-primary active\">");
-				out.println("<input type=\"radio\" id=\"version1\" name=\"version\" value=\"minor\" checked>Minor (" + onePlace.format(minorRevisionId) + ")");
+				out.println("<input class=\"btn-check\" type=\"radio\" id=\"version1\" name=\"version\" value=\"minor\" checked>");
+				out.println("<label for=\"version1\" class=\"btn btn-outline-dark\">Minor ("+ onePlace.format(minorRevisionId) +")");
 				out.println("</label>");
-				out.println("<label class=\"btn  btn-sm btn-primary\">");
-				out.println("<input type=\"radio\" id=\"version2\" name=\"version\"  value=\"major\">Major (" + onePlace.format(majorRevisionId) + ")");
+				out.println("<input class=\"btn-check\" type=\"radio\" id=\"version2\" name=\"version\"  value=\"major\">");
+				out.println("<label for=\"version2\" class=\"btn btn-outline-dark\">Major ("+ onePlace.format(majorRevisionId) +")");
 				out.println("</label>");
 				out.println("</div>");
 				out.println("</div>");
@@ -151,7 +157,7 @@ public class CheckInDocumentView extends WebView {
 				out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
 				out.println("<input type=\"hidden\" name=\"documentid\" value=\""+document.getDocumentId()+"\">");
 				out.println("<input type=\"hidden\" name=\"fileExtension\" id=\"fileExtension\" value=\""+document.getExtension().toUpperCase()+"\">");
-				out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Check In\" class=\"btn btn-sm btn-primary\">");
+				out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Check In\" class=\"btn btn-sm btn-dark\">");
 				out.println("</div>");
 				out.println("</div>");
 				out.println("</form>");

@@ -87,13 +87,12 @@ public class SearchDocumentClassView extends WebView {
 			out.println("<div class=\"card   \">");
 			out.println("<div class=\"card-header\">");
 			out.println("<div class=\"row\">");
-			out.println("<div class=\"col-sm-9\">");
-			out.println("<h4><i class=\"bi  bi-folder2-open\"></i>  ");
+			out.println("<div class=\"col-sm-3\"><i class=\"bi text-primary bi-search\"></i>  Search Document Class</div>");
+			out.println("<div class=\"col-sm-9 text-end\">");
+			out.println("<i class=\"bi text-primary bi-folder2-open\"></i>  ");
 			out.println(StringEscapeUtils.escapeHtml4(documentClass.getClassName()) + " - ");
 			out.println("<small>" + StringEscapeUtils.escapeHtml4(documentClass.getClassDescription()) + "</small>");
-			out.println("</h4>");
 			out.println("</div>");
-			out.println("<div class=\"col-sm-3 text-end\"	><h4><i class=\"bi  bi-search\"></i>  Search Document Class</h4></div>");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("<div class=\"card-body\">");
@@ -114,14 +113,14 @@ public class SearchDocumentClassView extends WebView {
 						out.println("<div class=\"col-sm-3\">");
 						out.println("<div class=\"input-group\">");
 						out.println("<input autocomplete=\"off\" type=\"text\" class=\"shortdate  col-xs-2 form-control\"  name=\""+indexDefinition.getIndexColumnName()+"\" id=\""+indexDefinition.getIndexColumnName()+"\" value=\"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"  cid=\""+documentClass.getClassId()+"\">");
-						out.println("<span class=\"input-group-text\"><i class=\"bi bi-calendar-date\"></i></span>");
+						out.println("<span class=\"input-group-text\"><i class=\"bi bi-calendar-event\"></i></span>");
 						out.println("</div>");
 						out.println("</div>");
 
 						out.println("<div class=\"col-sm-3 hidden\"  id=\""+indexDefinition.getIndexColumnName()+"_div\">");
 						out.println("<div class=\"input-group\">");
 						out.println("<input type=\"text\" class=\"shortdate  col-xs-2 form-control\" name=\""+indexDefinition.getIndexColumnName()+"_2\" id=\""+indexDefinition.getIndexColumnName()+"\" value=\"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"  cid=\""+documentClass.getClassId()+"\">");
-						out.println("<span class=\"input-group-text\"><i class=\"bi bi-calendar-date\"></i></span>");
+						out.println("<span class=\"input-group-text\"><i class=\"bi bi-calendar-event\"></i></span>");
 						out.println("</div>");
 						out.println("</div>");
 
@@ -129,28 +128,28 @@ public class SearchDocumentClassView extends WebView {
 						out.println("<div class=\"col-sm-3\">");
 						out.println("<div class=\"input-group\">");
 						out.println("<input type=\"text\" class=\"number  form-control\" name=\""+indexDefinition.getIndexColumnName()+"\"  id=\""+indexDefinition.getIndexColumnName()+"\"  value=\"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"   cid=\""+documentClass.getClassId()+"\">");
-						out.println("<span class=\"input-group-text\">N</span>");
+						out.println("<span class=\"input-group-text\"><i class=\"bi bi-hash\"></i></span>");
 						out.println("</div>");
 						out.println("</div>");
 						
 						out.println("<div class=\"col-sm-3 hidden\"  id=\""+indexDefinition.getIndexColumnName()+"_div\">");
 						out.println("<div class=\"input-group\">");
 						out.println("<input type=\"text\" class=\"number  form-control autocomplete\" name=\""+indexDefinition.getIndexColumnName()+"_2\" id=\""+indexDefinition.getIndexColumnName()+"\"value=\"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"   cid=\""+documentClass.getClassId()+"\">");
-						out.println("<span class=\"input-group-text\">N</span>");
+						out.println("<span class=\"input-group-text\"><i class=\"bi bi-hash\"></i></span>");
 						out.println("</div>");
 						out.println("</div>");
 					}else {
 						out.println("<div class=\"col-sm-3\">");
 						out.println("<div class=\"input-group\">");
 						out.println("<input type=\"text\"  class=\"form-control \" name=\""+indexDefinition.getIndexColumnName()+"\" id=\""+indexDefinition.getIndexColumnName()+"\"   value=\"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"  cid=\""+documentClass.getClassId()+"\">");
-						out.println("<span class=\"input-group-text\">S</span>");
+						out.println("<span class=\"input-group-text\"><i class=\"bi bi-type\"></i></span>");
 						out.println("</div>");
 						out.println("</div>");
 
 						out.println("<div class=\"col-sm-3 hidden\"  id=\""+indexDefinition.getIndexColumnName()+"_div\">");
 						out.println("<div class=\"input-group\">");
 						out.println("<input type=\"text\"  class=\"autocomplete form-control \"  name=\""+indexDefinition.getIndexColumnName()+"_2\" id=\""+indexDefinition.getIndexColumnName()+"\" value=\"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"  cid=\""+documentClass.getClassId()+"\">");
-						out.println("<span class=\"input-group-text\">S</span>");
+						out.println("<span class=\"input-group-text\"><i class=\"bi bi-type\"></i></span>");
 						out.println("</div>");
 						out.println("</div>");
 					}
@@ -164,7 +163,7 @@ public class SearchDocumentClassView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
 			out.println("<input type=\"hidden\"  name=\"classid\"  value=\""+ documentClass.getClassId() + "\"/>");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Show Hits\" class=\"btn btn-sm btn-primary\">");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Show Hits\" class=\"btn btn-sm btn-dark\">");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</fieldset>");
@@ -182,9 +181,10 @@ public class SearchDocumentClassView extends WebView {
 
 		out.println("<div class=\"mb-3 row\">");
 		out.println("<label for=\"txtDocumentId\" class=\"col-sm-3 col-form-label\"> "+"Document ID"+"</label>");
-		out.println("<div class=\"col-sm-9\">");
+		out.println("<div class=\"col-sm-9\"><div class=\"input-group\">");
 		out.println("<input  type=\"text\" name=\"txtDocumentId\" maxlength=\"8\" class=\"form-control digits\">");
-		out.println("</div>");
+		out.println("<span class=\"input-group-text\"><i class=\"bi bi-hash\"></i></span>");
+		out.println("</div></div>");
 		out.println("</div>");
 
 		out.println("<div class=\"mb-3 row\">");
@@ -248,7 +248,7 @@ public class SearchDocumentClassView extends WebView {
 		out.println("<div class=\"mb-3 row\">");
 		out.println("<label for=\"createdBy\" class=\"col-sm-3 col-form-label\"> Created By</label>");
 		out.println("<div class=\"col-sm-9\">");
-		out.println("<select name=\"createdBy\" class=\"form-control\">");
+		out.println("<select name=\"createdBy\" class=\"form-control form-select\">");
 		out.println("<option value=\"\">All Users</option>");
 		for(User user:userList){
 			out.println("<option value=\""+user.getUserName()+"\">"	+ user.getRealName() +"</option>");
@@ -260,7 +260,7 @@ public class SearchDocumentClassView extends WebView {
 		out.println("<div class=\"mb-3 row\">");
 		out.println("<label for=\"modifiedBy\" class=\"col-sm-3 col-form-label\"> Last Modified By</label>");
 		out.println("<div class=\"col-sm-9\">");
-		out.println("<select name=\"modifiedBy\" class=\"form-control\">");
+		out.println("<select name=\"modifiedBy\" class=\"form-control form-select\">");
 		out.println("<option value=\"\">All Users</option>");
 		for(User user:userList){
 			out.println("<option value=\""+user.getUserName()+"\">"	+ user.getRealName() +"</option>");

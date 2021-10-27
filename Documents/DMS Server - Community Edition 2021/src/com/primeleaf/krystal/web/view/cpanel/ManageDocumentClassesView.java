@@ -76,12 +76,12 @@ public class ManageDocumentClassesView extends WebView {
 		
 		out.println("<div class=\"card   \">");
 		out.println("<div class=\"card-header\">");
-		out.println("<div class=\"row\">");
+		out.println("<div class=\"d-flex justify-content-between\">");
 		out.println("<div class=\"col-xs-6\">");
-		out.println("<h4><i class=\"bi bi-folder2-open \"></i> Manage Document Classes</h4>");
+		out.println("<i class=\"bi text-primary bi-folder2-open \"></i> Manage Document Classes");
 		out.println("</div>");
 		out.println("<div class=\"col-xs-6 text-end\">");
-		out.println("<h4><a href=\"/cpanel/newdocumentclass\">Add Document Class</a></h4>");
+		out.println("<a href=\"/cpanel/newdocumentclass\">Add Document Class</a>");
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</div>");
@@ -101,14 +101,14 @@ public class ManageDocumentClassesView extends WebView {
 				for (DocumentClass documentClass : documentClassList) {
 					count++;
 					out.println("<div class=\"col-sm-4\">");
-					out.println("<div class=\"card   \">");
+					out.println("<div class=\"card\">");
 					out.println("<div class=\"card-body\">");
-					out.println("<h4 class=\"text-danger\">" + StringEscapeUtils.escapeHtml4(documentClass.getClassName()) + "</h4>");
+					out.println("<h4 class=\"text-primary\">" + StringEscapeUtils.escapeHtml4(documentClass.getClassName()) + "</h4>");
 					out.println("<h5>" + StringEscapeUtils.escapeHtml4(documentClass.getClassDescription()) + "</h5>");
 					out.println("<p>");
 					out.println("Active ");
 					if(documentClass.isVisible()){
-						out.println("&nbsp;&nbsp; <i class=\"bi bi-flag  text-success\"></i>");
+						out.println("&nbsp;&nbsp; <i class=\"bi bi-flag text-success\"></i>");
 					}else{
 						out.println("&nbsp;&nbsp; <i class=\"bi bi-flag \"></i>");
 					}

@@ -118,10 +118,10 @@ public class EditDocumentClassView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"radActive\" class=\"col-sm-3 col-form-label\">Active?</label>");
 			out.println("<div class=\"btn-group col-sm-9\" data-bs-toggle=\"buttons\">");
-			out.println("<label class=\"btn btn-sm btn-primary "); if(documentClass.isVisible()) {out.print(" active");} out.print("\">");
+			out.println("<label class=\"btn btn-sm btn-dark "); if(documentClass.isVisible()) {out.print(" active");} out.print("\">");
 			out.println("<input type=\"radio\" id=\"radActive1\" name=\"radActive\" value=\"Y\"");if( documentClass.isVisible()) {out.print(" checked");}out.print(">Yes");
 			out.println("</label>");
-			out.println("<label class=\"btn btn-sm btn-primary "); if(!documentClass.isVisible()) { out.print(" active");} out.print("\">");
+			out.println("<label class=\"btn btn-sm btn-dark "); if(!documentClass.isVisible()) { out.print(" active");} out.print("\">");
 			out.println("<input type=\"radio\" id=\"radActive2\" name=\"radActive\"  value=\"N\"");if(!documentClass.isVisible()) {out.print(" checked");}out.print(">No");
 			out.println("</label>");
 			out.println("</div>");
@@ -130,10 +130,10 @@ public class EditDocumentClassView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"radRevisionControl\" class=\"col-sm-3 col-form-label\">Enable Version Control?</label>");
 			out.println("<div class=\"btn-group col-sm-9\" data-bs-toggle=\"buttons\">");
-			out.println("<label class=\"btn btn-sm btn-primary "); if(documentClass.isRevisionControlEnabled()) {out.print(" active");} out.print("\">");
+			out.println("<label class=\"btn btn-sm btn-dark "); if(documentClass.isRevisionControlEnabled()) {out.print(" active");} out.print("\">");
 			out.println("<input type=\"radio\" id=\"radRevisionControl1\" name=\"radRevisionControl\" value=\"Y\"");if( documentClass.isRevisionControlEnabled()) {out.print(" checked");}out.print(">Yes");
 			out.println("</label>");
-			out.println("<label class=\"btn btn-sm btn-primary "); if(!documentClass.isRevisionControlEnabled()) { out.print(" active");} out.print("\">");
+			out.println("<label class=\"btn btn-sm btn-dark "); if(!documentClass.isRevisionControlEnabled()) { out.print(" active");} out.print("\">");
 			out.println("<input type=\"radio\" id=\"radRevisionControl2\" name=\"radRevisionControl\"  value=\"N\"");if(!documentClass.isRevisionControlEnabled()) {out.print(" checked");}out.print(">No");
 			out.println("</label>");
 			out.println("</div>");
@@ -143,7 +143,7 @@ public class EditDocumentClassView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
 			out.println("<input type=\"hidden\" name=\"classid\" 	value=\""+ documentClass.getClassId() + "\"/>");
-			out.println("<input type=\"submit\" name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+			out.println("<input type=\"submit\" name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 			out.println("</div>");
 			out.println("</div>");
 

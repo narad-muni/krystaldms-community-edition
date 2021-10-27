@@ -74,7 +74,7 @@ public class DocumentNotesView extends WebView {
 			}
 			ArrayList<DocumentNote>  documentNotes = (ArrayList<DocumentNote>)request.getAttribute("NOTES");
 			out.println("<div class=\"card   \">");
-			out.println("<div class=\"card-header\"><h4><i class=\"bi bi-chat-left-dots \"></i> Notes</h4></div>");
+			out.println("<div class=\"card-header\"><i class=\"bi bi-chat-left-dots \"></i> Notes</div>");
 			
 			if(documentNotes.size() > 0){
 				out.println("<ul class=\"list-group\">");

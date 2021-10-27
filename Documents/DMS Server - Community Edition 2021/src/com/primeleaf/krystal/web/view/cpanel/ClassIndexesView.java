@@ -64,13 +64,13 @@ public class ClassIndexesView extends WebView {
 		out.println("<div class=\"card-header\">");
 		out.println("<div class=\"row\">");
 		out.println("<div class=\"col-sm-6\">");
-		out.println("<h4><i class=\"bi  bi-folder2-open\"></i> ");
+		out.println("<i class=\"bi text-primary bi-folder2-open\"></i> ");
 		out.println(StringEscapeUtils.escapeHtml4(documentClass.getClassName())+" - ");
 		out.println("<small>"+StringEscapeUtils.escapeHtml4(documentClass.getClassDescription()) + "</small>");
-		out.println("</h4>");
+		out.println("");
 		out.println("</div>");
 		out.println("<div class=\"col-sm-6 text-end\">");
-		out.println("<h4><i class=\"bi  bi-check-square\"></i>  Available Indexes");
+		out.println("<i class=\"bi text-primary bi-check-square\"></i>  Available Indexes");
 		out.println("</div>");
 		out.println("</div>");//row
 		out.println("</div>");//card-header
@@ -130,12 +130,10 @@ public class ClassIndexesView extends WebView {
 
 					out.println("<td class=\"text-center\">");
 					out.println("<div class=\"btn-group\" data-bs-toggle=\"buttons\">");
-					out.println("<label class=\"btn btn-xs btn-primary "); if(indexDefinition.isMandatory()) {out.print(" active");} out.print("\">");
-					out.println("<input type=\"radio\" id=\""+indexDefinition.getIndexColumnName()+"radMandatory1\" name=\""+indexDefinition.getIndexColumnName()+"radMandatory\" value=\"Y\"");if( indexDefinition.isMandatory()) {out.print(" checked");}out.print(">Yes");
-					out.println("</label>");
-					out.println("<label class=\"btn btn-xs btn-primary "); if(!indexDefinition.isMandatory()) { out.print(" active");} out.print("\">");
-					out.println("<input type=\"radio\" id=\""+indexDefinition.getIndexColumnName()+"radMandatory2\" name=\""+indexDefinition.getIndexColumnName()+"radMandatory\"  value=\"N\"");if(!indexDefinition.isMandatory()) {out.print(" checked");}out.print(">No");
-					out.println("</label>");
+					out.println("<input class=\"btn-check\" type=\"radio\" id=\""+indexDefinition.getIndexColumnName()+"radMandatory1\" name=\""+indexDefinition.getIndexColumnName()+"radMandatory\" value=\"Y\"");if(indexDefinition.isMandatory()) {out.print(" checked");}out.print("/>");
+					out.println("<label for=\""+indexDefinition.getIndexColumnName()+"radMandatory1\" class=\"btn btn-outline-dark\">Yes</label>");
+					out.println("<input class=\"btn-check\" type=\"radio\" id=\""+indexDefinition.getIndexColumnName()+"radMandatory2\" name=\""+indexDefinition.getIndexColumnName()+"radMandatory\"  value=\"N\"");if(!indexDefinition.isMandatory()) {out.print(" checked");}out.print("/>");
+					out.println("<label for=\""+indexDefinition.getIndexColumnName()+"radMandatory2\" class=\"btn btn-outline-dark\">No</label>");
 					out.println("</div>");
 					out.println("</td>");
 
@@ -152,7 +150,7 @@ public class ClassIndexesView extends WebView {
 
 				out.println("<div class=\"text-center card-body\">");
 				out.println("<input type=\"hidden\" name=\"classid\" id=\"classid\" value=\""+documentClass.getClassId()+"\">"); 
-				out.println("<input type=\"submit\" name=\"btnSubmit\"  id=\"btnSubmit\" value=\"Update\" class=\"btn btn-sm btn-primary\">");
+				out.println("<input type=\"submit\" name=\"btnSubmit\"  id=\"btnSubmit\" value=\"Update\" class=\"btn btn-sm btn-dark\">");
 				out.println("</div>");
 
 				out.println("</form>");
@@ -167,7 +165,7 @@ public class ClassIndexesView extends WebView {
 		out.println("</div>");
 
 		out.println("<div class=\"card   \">");
-		out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-check-square\"></i> Add Index</h4></div>");
+		out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-check-square\"></i> Add Index</div>");
 		out.println("<div class=\"card-body\">");
 
 		out.println("<form action=\"/cpanel/newclassindex\" method=\"post\" id=\"frmNewClassIndex\" class=\"form-horizontal\">");
@@ -194,7 +192,7 @@ public class ClassIndexesView extends WebView {
 		out.println("<div class=\"mb-3 row\">");
 		out.println("<label for=\"cmbIndexType\" class=\"col-sm-3 col-form-label\">Index Type</label>");
 		out.println("<div class=\"col-sm-9\">");
-		out.println("<select id=\"cmbIndexType\" name=\"cmbIndexType\" class=\"form-control\" title=\"Please enter index length\">");
+		out.println("<select id=\"cmbIndexType\" name=\"cmbIndexType\" class=\"form-control form-select\" title=\"Please enter index length\">");
 		out.println("<option value=\""+IndexDefinition.INDEXTYPE_STRING+"\">String </option>");
 		out.println("<option value=\""+IndexDefinition.INDEXTYPE_NUMBER+"\">Number</option>");
 		out.println("<option value=\""+IndexDefinition.INDEXTYPE_DATE+"\">Date</option>");
@@ -213,12 +211,10 @@ public class ClassIndexesView extends WebView {
 		out.println("<label for=\"radMandatory\" class=\"col-sm-3 col-form-label\">Mandatory?</label>");
 		out.println("<div class=\"col-sm-9\">");
 		out.println("<div class=\"btn-group\" data-bs-toggle=\"buttons\">");
-		out.println("<label class=\"btn btn-sm btn-primary\">");
-		out.println("<input type=\"radio\" id=\"radMandatory1\" name=\"radMandatory\" value=\"Y\"/>Yes");
-		out.println("</label>");
-		out.println("<label class=\"btn btn-sm btn-primary active\">");
-		out.println("<input type=\"radio\" id=\"radMandatory2\" name=\"radMandatory\"  value=\"N\" checked/>No");
-		out.println("</label>");
+		out.println("<input class=\"btn-check\" type=\"radio\" id=\"radMandatory1\" name=\"radMandatory\" value=\"Y\"/>");
+		out.println("<label for=\"radMandatory1\" class=\"btn btn-outline-dark\">Yes</label>");
+		out.println("<input class=\"btn-check\" type=\"radio\" id=\"radMandatory2\" name=\"radMandatory\"  value=\"N\" checked/>");
+		out.println("<label for=\"radMandatory2\" class=\"btn btn-outline-dark\">No</label>");
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</div>");
@@ -234,7 +230,7 @@ public class ClassIndexesView extends WebView {
 		out.println("<div class=\"mb-3 row\">");
 		out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
 		out.println("<input type=\"hidden\" name=\"classid\" value=\""+documentClass.getClassId()+"\">");
-		out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+		out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 		out.println("</div>");
 		out.println("</div>");
 

@@ -44,31 +44,31 @@ public class ControlPanelView extends WebView {
 	private void printDomains() throws Exception{
 		try{
 			
-			out.println("<div class=\"card   \">");
-			out.println("<div class=\"card-header\">");
-			out.println("<h3><i class=\"bi bi-speedometer2  \"></i> Control Panel</h3>");
+			out.println("<div class=\"card\">");
+			out.println("<div class=\"card-header h5\">");
+			out.println("<i class=\"bi text-primary bi-speedometer2\"></i> Control Panel");
 			out.println("</div>");
 			
 			out.println("<div class=\"list-group\">");
 			
 			out.println("<a href=\"/cpanel/users\" class=\"list-group-item\">");
-			out.println("<h4><i class=\"bi bi-person  \"></i> Manage Users</h4>");
+			out.println("<h5><i class=\"bi text-primary bi-person\"></i> Manage Users</h5>");
 			out.println("</a>");
 
 			out.println("<a href=\"/cpanel/managedocumentclasses\"  class=\" list-group-item\">");
-			out.println("<h4><i class=\"bi bi-folder2-open  \"></i> Manage Document Classes</h4>");
+			out.println("<h5><i class=\"bi text-primary bi-folder2-open\"></i> Manage Document Classes</h5>");
 			out.println("</a>");
 
 			out.println("<a href=\"/cpanel/managecheckouts\"  class=\" list-group-item\">");
-			out.println("<h4><i class=\"bi bi-lock  \"></i> Manage Checkouts</h4>");
+			out.println("<h5><i class=\"bi text-primary bi-lock\"></i> Manage Checkouts</h5>");
 			out.println("</a>");
 
 			out.println("<a href=\"/cpanel/recyclebin\"  class=\" list-group-item\">");
-			out.println("<h4><i class=\"bi bi-trash  \"></i> Recycle Bin</h4>");
+			out.println("<h5><i class=\"bi text-primary bi-trash\"></i> Recycle Bin</h5>");
 			out.println("</a>");
 
 			out.println("<a href=\"/cpanel/reports\" class=\"list-group-item\">");
-			out.println("<h4><i class=\"bi bi-bar-chart\"></i> System Reports</h4>");
+			out.println("<h5><i class=\"bi text-primary bi-bar-chart\"></i> System Reports</h5>");
 			out.println("</a>");
 			
 			out.println("</div>");//list-group

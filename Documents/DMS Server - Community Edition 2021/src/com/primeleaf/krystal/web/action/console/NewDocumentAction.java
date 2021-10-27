@@ -82,8 +82,7 @@ public class NewDocumentAction implements Action {
 				classId = request.getParameter("classid")!=null? request.getParameter("classid"):"0";
 				comments = request.getParameter("txtNote");
 				fileName = filePart.getSubmittedFileName();
-				ext = fileName.substring(fileName.lastIndexOf(".") + 1).toUpperCase();
-//				file=new File(tempFilePath+"."+ext);	
+				ext = fileName.substring(fileName.lastIndexOf(".") + 1).toUpperCase();	
 				InputStream tempIS = filePart.getInputStream();
 //				java.nio.file.Files.copy(
 //					      tempIS, 

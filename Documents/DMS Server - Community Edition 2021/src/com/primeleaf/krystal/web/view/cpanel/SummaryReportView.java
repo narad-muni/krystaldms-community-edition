@@ -66,18 +66,18 @@ public class SummaryReportView extends WebView {
 		}
 
 		try{
-			out.println("<div class=\"card   \">");
-			out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-bar-chart\"></i> Repository Content Summary</h4></div>");
+			out.println("<div class=\"card\">");
+			out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-bar-chart\"></i> Repository Content Summary</div>");
 			out.println("<div class=\"card-body\">");
 
 			out.println("<div class=\"row\">");
 
 			out.println("<div class=\"col-lg-4\">");
-			out.println("<div class=\"card   \">");
+			out.println("<div class=\"card\">");
 			out.println("<div class=\"card-header\">");
-			out.println("<div class=\"row\">");
+			out.println("<div class=\"d-flex justify-content-between\">");
 			out.println("<div class=\"col-xs-4\">");
-			out.println("<i class=\"bi bi-folder2-open\"></i>");
+			out.println("<i class=\"bi text-primary bi-folder2-open h1\"></i>");
 			out.println("</div>");
 			out.println("<div class=\"col-xs-8 text-end\">");
 			out.println("<h3>"+request.getAttribute("DOCUMENT_CLASSES")+"</h3>");
@@ -90,11 +90,11 @@ public class SummaryReportView extends WebView {
 
 
 			out.println("<div class=\"col-lg-4\">");
-			out.println("<div class=\"card   \">");
+			out.println("<div class=\"card\">");
 			out.println("<div class=\"card-header\">");
-			out.println("<div class=\"row\">");
+			out.println("<div class=\"d-flex justify-content-between\">");
 			out.println("<div class=\"col-xs-6\">");
-			out.println("<i class=\"bi bi-file-earmark \"></i>");
+			out.println("<i class=\"bi h1 bi-file-earmark text-primary\"></i>");
 			out.println("</div>");
 			out.println("<div class=\"col-xs-6 text-end\">");
 			out.println("<h3>"+request.getAttribute("DOCUMENTS")+"</h3>");
@@ -106,11 +106,11 @@ public class SummaryReportView extends WebView {
 			out.println("</div>");//col-lg-4
 
 			out.println("<div class=\"col-lg-4\">");
-			out.println("<div class=\"card   \">");
+			out.println("<div class=\"card\">");
 			out.println("<div class=\"card-header\">");
-			out.println("<div class=\"row\">");
+			out.println("<div class=\"d-flex justify-content-between\">");
 			out.println("<div class=\"col-xs-6\">");
-			out.println("<i class=\"bi bi-person \"></i>");
+			out.println("<i class=\"bi bi-person text-primary h1\"></i>");
 			out.println("</div>");
 			out.println("<div class=\"col-xs-6 text-end\">");
 			out.println("<h3>"+request.getAttribute("USERS")+"</h3>");
@@ -126,9 +126,9 @@ public class SummaryReportView extends WebView {
 			ArrayList<DocumentClass> documentClasses = 	(ArrayList<DocumentClass>) request.getAttribute("DOCUMENTCLASSLIST");
 			if(documentClasses.size() > 0){
 				//charts rendering starts here
-				out.println("<div class=\"card   \">");
+				out.println("<div class=\"card\">");
 				out.println("<div class=\"card-header\">");
-				out.println("<i class=\"bi bi-pie-chart \"></i> Charts");
+				out.println("<i class=\"bi text-primary bi-pie-chart \"></i> Charts");
 				out.println("</div>");
 				out.println("<div class=\"card-body\">");
 				out.println("<div class=\"row\">");
@@ -218,9 +218,9 @@ public class SummaryReportView extends WebView {
 			}
 			//charts rendering ends here
 
-			out.println("<div class=\"card    \">");
+			out.println("<div class=\"card\">");
 			out.println("<div class=\"card-header\">");
-			out.println("<i class=\"bi bi-folder2-open \"></i> Document Classes");
+			out.println("<i class=\"bi text-primary bi-folder2-open \"></i> Document Classes");
 			out.println("</div>");
 			ArrayList<DocumentClass> documentClassList = (ArrayList<DocumentClass>) request.getAttribute("DOCUMENTCLASSLIST");
 			if(documentClassList.size() > 0 ){
@@ -237,7 +237,7 @@ public class SummaryReportView extends WebView {
 					String ownerName = (String) request.getAttribute(documentClass.getClassName()+"_OWNER" );
 					out.println("<tr>");
 					out.println("<td style=\"width:80%;\">");
-					out.println("<h4 class=\"text-danger\">" + StringEscapeUtils.escapeHtml4(documentClass.getClassName()) + "</h4>");
+					out.println("<h4 class=\"text-primary\">" + StringEscapeUtils.escapeHtml4(documentClass.getClassName()) + "</h4>");
 					out.println("<h5>" + StringEscapeUtils.escapeHtml4(documentClass.getClassDescription()) + "</h5>");
 					out.println("<p>");
 					out.println("<i>Created By " + ownerName);

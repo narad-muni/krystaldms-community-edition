@@ -23,7 +23,7 @@ public class InvalidUserView extends WebView{
 	private void printUser404() throws Exception{
 		out.println("<div class=\"row\">");
 		out.println("<div class=\"col-lg-3 col-centered pre-login\">");
-		out.println("<div class=\"card   \">");
+		out.println("<div class=\"card mb-3 mt-3\">");
 		out.println("<div class=\"card-header\">");
 		out.println("<h4 class=\"text-danger\"><i class=\"bi bi-exclamation-triangle me-2\"></i>Error</h4>");
 		out.println("</div>"); //card   - heading

@@ -68,7 +68,7 @@ public class DocumentClassAccessHistoryReportView extends WebView {
 
 		try{
 			out.println("<div class=\"card   \">");
-			out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-bar-chart\"></i> Document Class Access History </h4></div>");
+			out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-bar-chart\"></i> Document Class Access History</div>");
 			out.println("<div class=\"card-body\">");
 
 			out.println("<form action=\"/cpanel/documentclassaccesshistory\" autocomplete=\"off\" method=\"post\" id=\"frmReport\" class=\"form-horizontal\" accept-charset=\"utf-8\">");
@@ -124,7 +124,7 @@ public class DocumentClassAccessHistoryReportView extends WebView {
 			out.println("<hr/>");
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</form>");
@@ -134,7 +134,7 @@ public class DocumentClassAccessHistoryReportView extends WebView {
 
 			if(request.getAttribute("ACCESSHISTORY")!=null){
 				out.println("<div class=\"card   \">");
-				out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-clock\"></i> Document Class Access History</h4></div>");
+				out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-clock\"></i> Document Class Access History</div>");
 				
 				ArrayList<AuditLogRecord>  accessHistory = (ArrayList<AuditLogRecord>)request.getAttribute("ACCESSHISTORY");
 				if(accessHistory.size() > 0){

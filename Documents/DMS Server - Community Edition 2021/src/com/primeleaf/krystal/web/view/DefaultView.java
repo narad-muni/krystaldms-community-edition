@@ -47,48 +47,6 @@ public class DefaultView extends WebView {
 	}
 
 	private void printLoginForm() throws Exception{
-
-//		out.println("<form method=\"post\" action=\"/login\" name=\"frmLogin\" id=\"frmLogin\" role=\"form\">");
-//		out.println("<div class=\"row\">");
-//
-//		out.println("<div class=\"col-lg-3 col-centered pre-login\">");
-//
-//		out.println("<div class=\"card   \">");
-//		out.println("<div class=\"card-header\">");
-//		out.println("<h1><i class=\"bi bi-box-arrow-in-right me-2\"></i>Login</h1>");
-//		out.println("</div>");
-//
-//		out.println("<div class=\"card-body\">");
-//		printLoginError();
-//
-//		out.println("<div class=\"mb-3 row\">");
-//		out.println("<div class=\"input-group\">");
-//		out.println("<input name=\"txtLoginId\" id=\"txtLoginId\" type=\"text\" class=\"form-control required\" autocomplete=\"off\" placeholder=\"Username  or Email Id\"  title=\"Please enter username or email\"></td>");
-//		out.println("<span class=\"input-group-text\"><i class=\"bi bi-person\"></i></span>");
-//		out.println("</div>");
-//		out.println("</div>");
-//
-//		out.println("<div class=\"mb-3 row\">");
-//		out.println("<div class=\"input-group\">");
-//		out.println("<input name=\"txtPassword\" id=\"txtPassword\" type=\"password\"  class=\"form-control required\" autocomplete=\"off\" placeholder=\"Password\"  title=\"Please enter password\"></td>");
-//		out.println("<span class=\"input-group-text\"><i class=\"bi bi-lock\"></i></span>");
-//		out.println("</div>");
-//		out.println("</div>");
-//
-//		out.println("<div class=\"mb-3 d-flex\">");
-//		if(ConfigParser.PasswordReset()) {
-//			out.println("<a class=\"mt-1\" href=\"forgotpassword\">Forgot Password ?</a>");
-//		}
-//		out.println("<button type=\"submit\" class=\"btn btn-primary btn-sm ms-auto\" data-loading-text=\"Please wait...\" id=\"btnLogin\"> <i class=\"bi  bi-box-arrow-in-right \"></i> Login</button>");
-//		out.println("</div>"); //mb-3
-//
-//		out.println("</div>"); //card   Body
-//		out.println("</div>"); //Panel
-//		out.println("</div>"); //col-lg-4
-//
-//		out.println("</div>"); //row
-//		out.println("</form>");
-		
 		
 		out.print("<div class=\"container-fluid mb-4\">");
 		out.print("    <form method=\"post\" action=\"/login\" name=\"frmLogin\" id=\"frmLogin\" role=\"form\" novalidate=\"novalidate\">");
@@ -100,8 +58,8 @@ public class DefaultView extends WebView {
 		printLoginError();
 		out.print("                   <div class=\"form-floating mb-3\">    <input name=\"txtLoginId\" id=\"txtUserName\" type=\"text\" class=\"form-control form-control-sm required\" autocomplete=\"off\" placeholder=\"Username Or Email\" title=\"Please enter username\">    <label for=\"txtUserName\"><i class=\"bi bi-person h6 me-2\"></i>Username Or Email</label>    </div>");
 		out.print("                   <div class=\"form-floating mb-3\">    <input name=\"txtPassword\" id=\"txtPassword\" type=\"password\" class=\"form-control form-control-sm required\" autocomplete=\"off\" placeholder=\"Password\" title=\"Please enter password\">    <label for=\"txtPassword\"><i class=\"bi bi-key h6 me-2\"></i>Password</label>    </div>");
-		out.print("                   <div class=\"d-grid gap-2\">    <button type=\"submit\" class=\"btn btn-primary\" data-loading-text=\"Please wait...\" id=\"btnLogin\"><i class=\"bi bi-box-arrow-in-right h6 me-2\"></i>Login</button>    </div>");
-		if(ConfigParser.PasswordReset()) {
+		out.print("                   <div class=\"d-grid gap-2\">    <button type=\"submit\" class=\"btn btn-dark\" data-loading-text=\"Please wait...\" id=\"btnLogin\"><i class=\"bi bi-box-arrow-in-right h6 me-2\"></i>Login</button>    </div>");
+		if(ConfigParser.PasswordReset()) {//Added By Saumil Shah on October 2021
 			out.print("                   <p class=\"text-center m-4\"><a href=\"/forgotpassword\">Forgot password?</a></p>");
 		}
 		out.print("                </div>");

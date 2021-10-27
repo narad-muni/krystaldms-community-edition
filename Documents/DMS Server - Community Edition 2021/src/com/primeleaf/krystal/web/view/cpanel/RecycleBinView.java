@@ -66,7 +66,7 @@ public class RecycleBinView extends WebView {
 		
 		out.println("<div class=\"card   \">");
 		out.println("<div class=\"card-header\">");
-		out.println("<h4><i class=\"bi bi-trash \"></i> Recyle Bin</h4>");
+		out.println("<i class=\"bi text-primary bi-trash \"></i> Recyle Bin");
 		out.println("</div>");
 		
 		try {

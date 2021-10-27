@@ -63,7 +63,7 @@ public class DocumentClassPropertiesView extends WebView {
 			out.println("<div class=\"card   \">");
 			out.println("<div class=\"card-header\">Document Class Properties</div>");
 			out.println("<div class=\"table-responsive\">");
-			out.println("<table class=\"table table-bordered  table-hover\">");
+			out.println("<table class=\"table table-sm table-bordered  table-hover\">");
 			out.println("<thead>");
 			out.println("<tr class=\"info\"><th>Property</th><th>Value</th></tr>");
 			out.println("</thead>");
@@ -85,7 +85,7 @@ public class DocumentClassPropertiesView extends WebView {
 			out.println("<div class=\"card   \">");
 			out.println("<div class=\"card-header\">Storage Limits</div>");
 			out.println("<div class=\"table-responsive\">");
-			out.println("<table class=\"table table-bordered table-hover\">");
+			out.println("<table class=\"table table-sm table-bordered table-hover\">");
 			out.println("<thead>");
 			out.println("<tr class=\"info\"><th>Property</th><th>Value</th></tr>");
 			out.println("</thead>");
@@ -127,7 +127,7 @@ public class DocumentClassPropertiesView extends WebView {
 			out.println("<div class=\"card   \">");
 			out.println("<div class=\"card-header\">Document Expiry</div>");
 			out.println("<div class=\"table-responsive\">");
-			out.println("<table class=\"table table-bordered table-hover\">");
+			out.println("<table class=\"table table-sm table-bordered table-hover\">");
 			out.println("<thead>");
 			out.println("<tr class=\"info\"><th>Property</th><th>Value</th></tr>");
 			out.println("</thead>");
@@ -149,7 +149,7 @@ public class DocumentClassPropertiesView extends WebView {
 			out.println("Available Document Class Indexes");//card-header
 			out.println("</div>");//card-header
 			out.println("<div class=\"table-responsive\">");
-			out.println("<table class=\"table table-bordered  table-hover\">");
+			out.println("<table class=\"table table-sm table-bordered  table-hover\">");
 			out.println("<thead>");
 			out.println("<tr class=\"info\">");
 			out.println("<th>Index Description</th>");
@@ -212,7 +212,7 @@ public class DocumentClassPropertiesView extends WebView {
 			
 			out.println("</div>");//modal-body
 			out.println("<div class=\"modal-footer\">");
-			out.println("<button type=\"button\" class=\"btn btn-sm btn-primary\" data-bs-dismiss=\"modal\">Close</button>");
+			out.println("<button type=\"button\" class=\"btn btn-sm btn-dark\" data-bs-dismiss=\"modal\">Close</button>");
 			out.println("</div>");
 		} catch (Exception ex) {
 			ex.printStackTrace();

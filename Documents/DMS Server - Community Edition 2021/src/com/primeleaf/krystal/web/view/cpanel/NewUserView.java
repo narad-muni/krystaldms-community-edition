@@ -133,19 +133,17 @@ public class NewUserView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"radUserType\" class=\"col-sm-3 col-form-label\">User Type</label>");
 			out.println("<div class=\"btn-group col-sm-9\" data-bs-toggle=\"buttons\">");
-			out.println("<label class=\"btn btn-primary  btn-sm active\">");
-			out.println("<input type=\"radio\" id=\"radUserType1\" name=\"radUserType\" value=\""+User.USER_TYPE_ADMIN+"\" checked>Administrator");
-			out.println("</label>");
-			out.println("<label class=\"btn  btn-sm btn-primary\">");
-			out.println("<input type=\"radio\" id=\"radUserType2\" name=\"radUserType\"  value=\""+User.USER_TYPE_USER+"\">User");
-			out.println("</label>");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radUserType1\" name=\"radUserType\" value=\""+User.USER_TYPE_ADMIN+"\" checked>");
+			out.println("<label for=\"radUserType1\" class=\"btn btn-outline-dark\">Administrator</label>");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radUserType2\" name=\"radUserType\"  value=\""+User.USER_TYPE_USER+"\">");
+			out.println("<label for=\"radUserType2\" class=\"btn btn-outline-dark\">User</label>");
 			out.println("</div>");
 			out.println("</div>");
 
 			out.println("<hr/>");
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 			out.println("</div>");
 			out.println("</div>");
 			

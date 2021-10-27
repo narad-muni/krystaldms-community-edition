@@ -110,15 +110,15 @@ public class OpenDocumentClassView extends WebView {
 		out.println("<div class=\"card   \">");
 		out.println("<div class=\"card-header\">");
 		out.println("<div class=\"row\">");
-		out.println("<div class=\"col-sm-6\">");
-		out.println("<h4><i class=\"bi  bi-folder2-open\"></i> ");
-		out.println(StringEscapeUtils.escapeHtml4(documentClass.getClassName())+" - ");
-		out.println("<small>"+StringEscapeUtils.escapeHtml4(documentClass.getClassDescription()) + "</small>");
-		out.println("</h4>");
+		out.println("<div class=\"col-sm-6 text-start\">");
+		out.println("<i class=\"bi text-primary bi-list-ul\"></i> Document Hitlist - ");
+		out.println("<small>Showing " +  startRecord  + " to "  + endRecord  + " of " + totalHits+"</small>");
 		out.println("</div>");
 		out.println("<div class=\"col-sm-6 text-end\">");
-		out.println("<h4><i class=\"bi  bi-list-ul\"></i> Document Hitlist - ");
-		out.println("<small>Showing " +  startRecord  + " to "  + endRecord  + " of " + totalHits+"</small>");
+		out.println("<i class=\"bi text-primary bi-folder2-open\"></i> ");
+		out.println(StringEscapeUtils.escapeHtml4(documentClass.getClassName())+" - ");
+		out.println("<small>"+StringEscapeUtils.escapeHtml4(documentClass.getClassDescription()) + "</small>");
+		out.println("");
 		out.println("</div>");
 		out.println("</div>");//row
 		out.println("</div>");//card-header
@@ -126,7 +126,7 @@ public class OpenDocumentClassView extends WebView {
 		if(documentHitlist.size() > 0 ){
 			out.println("<form action=\"/console/bulkdelete\" method=\"post\" name=\"frmBulkAction\" id=\"frmBulkAction\" class=\"form-horizontal\">");
 			out.println("<div class=\"table-responsive\">");
-			out.println("<table class=\"table table-hover table-striped table-condensed\" style=\"font-size:12px;\">");
+			out.println("<table class=\"table table-sm table-hover table-striped table-condensed\" style=\"margin-bottom:0rem;font-size:12px;\">");
 			out.println("<thead>");
 			out.println("<tr>");
 			if(acl.canDelete() || acl.canDownload()){
@@ -238,7 +238,7 @@ public class OpenDocumentClassView extends WebView {
 			out.println("</div>");//table-responsive
 			out.println("</form>");
 
-			out.println("<div class=\"card-body\">");
+			out.println("<div class=\"card-footer\">");
 			generatePagination("/console/opendocumentclass");
 			out.println("<div id=\"errorWrapper\"><div id=\"errorDiv\"></div></div>");
 			generateHistlistFooter(documentClass,acl);

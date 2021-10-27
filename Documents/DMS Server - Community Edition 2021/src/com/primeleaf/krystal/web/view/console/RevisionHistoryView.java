@@ -67,13 +67,13 @@ public class RevisionHistoryView extends WebView {
 		try {
 			ArrayList<RevisionRecord>  revisionHistory = (ArrayList<RevisionRecord>)request.getAttribute("REVISIONHISTORY");
 			out.println("<div class=\"modal-header\">");
+			out.println("<h5 class=\"modal-title\" id=\"myModalLabel\"><i class=\"bi text-primary bi-clock \"></i> Revision History</h5>");
 			out.println("<button type=\"button\" class=\"btn\" data-bs-dismiss=\"modal\" aria-hidden=\"true\"><i class=\"bi-x-circle\"></i></button>");
-			out.println("<h4 class=\"modal-title\" id=\"myModalLabel\"><i class=\"bi bi-clock \"></i> Revision History</h4>");
 			out.println("</div>");
 			out.println("<div class=\"modal-body\">");
 			if(revisionHistory.size() > 0){
 				out.println("<div class=\"table-responsive\">");
-				out.println("<table class=\"table table-condensed table-striped\">");
+				out.println("<table class=\"table table-sm table-condensed table-striped\">");
 				out.println("<thead>");
 				out.println("<tr>");
 				out.println("<th class=\"text-center\">Revision ID</th>");
@@ -102,7 +102,7 @@ public class RevisionHistoryView extends WebView {
 			out.println("</div>");//modal-body
 			
 			out.println("<div class=\"modal-footer\">");
-			out.println("<button type=\"button\" class=\"btn btn-sm btn-primary\" data-bs-dismiss=\"modal\">Close</button>");
+			out.println("<button type=\"button\" class=\"btn btn-sm btn-dark\" data-bs-dismiss=\"modal\">Close</button>");
 			out.println("</div>");
 
 		} catch (Exception ex) {

@@ -79,7 +79,7 @@ public class ManageCheckoutsView extends WebView {
 
 		out.println("<div class=\"card   \">");
 		out.println("<div class=\"card-header\">");
-		out.println("<h4><i class=\"bi bi-lock \"></i> Manage Checkouts</h4>");
+		out.println("<i class=\"bi bi-lock text-primary\"></i> Manage Checkouts");
 		out.println("</div>");
 
 		out.println("<div class=\"card-body\">");
@@ -111,8 +111,8 @@ public class ManageCheckoutsView extends WebView {
 						out.println("<small><span class=\"badge bg-success tip\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Document ID\">"+checkedOutDocument.getDocumentId()+"</span>&nbsp;");
 						out.println("<span class=\"badge bg-primary tip\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Revision ID\">"+checkedOutDocument.getRevisionId()+"</span>&nbsp;");
 						out.println("</small></h3>");
-						out.println("<h5><i class=\"bi bi-folder2-open\"></i> "+  checkedOutDocument.getDocumentClass().getClassName()+ "</h5>");
-						out.println("<h5><i class=\"bi bi-person\"></i> "+  checkedOutDocument.getUserName() + " <i class=\"bi bi-clock\"></i> " + StringHelper.formatDate(checkedOutDocument.getCheckOutDate()) + " ,  " + StringHelper.getFriendlyDateTime( checkedOutDocument.getCheckOutDate())+"  </h5>");
+						out.println("<h5><i class=\"bi text-primary bi-folder2-open\"></i> "+  checkedOutDocument.getDocumentClass().getClassName()+ "</h5>");
+						out.println("<h6><i class=\"bi text-primary bi-person\"></i> "+  checkedOutDocument.getUserName() + " </h6><h6> <i class=\"bi text-primary bi-clock\"></i> " + StringHelper.formatDate(checkedOutDocument.getCheckOutDate()) + " ,  " + StringHelper.getFriendlyDateTime( checkedOutDocument.getCheckOutDate())+"  </h6>");
 						out.println("</div>");
 						out.println("<div class=\"card-footer\">");
 						out.println("<a href=\"/cpanel/cancelcheckoutadmin?documentid="+checkedOutDocument.getDocumentId()+"&revisionid="+checkedOutDocument.getRevisionId()+"\" class=\"confirm\" title=\"Are you sure, you want to cancel this checkout?\">Cancel Checkout</a>");
@@ -143,7 +143,7 @@ public class ManageCheckoutsView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"cmbDocumentClass\" class=\"col-sm-3 col-form-label\">Document Class <span style='color:red'>*</span></label>");
 			out.println("<div class=\"col-sm-9\">");
-			out.println("<select name=\"cmbDocumentClass\" class=\"form-control required\">");
+			out.println("<select name=\"cmbDocumentClass\" class=\"form-control form-select required\">");
 			out.println("<option value=\"ALL\">All Document Classes</option>");
 			String selected = "";
 			for(DocumentClass documentClass : documentClassList){
@@ -160,7 +160,7 @@ public class ManageCheckoutsView extends WebView {
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<label for=\"txtListDescription\" class=\"col-sm-3 col-form-label\">User <span style='color:red'>*</span></label>");
 			out.println("<div class=\"col-sm-9\">");
-			out.println("<select name=\"cmbUser\" class=\"form-control required\">");
+			out.println("<select name=\"cmbUser\" class=\"form-control form-select required\">");
 			out.println("<option value=\"ALL\">All Users</option>");
 			for(User user : userList){
 				selected = "";
@@ -176,7 +176,7 @@ public class ManageCheckoutsView extends WebView {
 			out.println("<hr/>");
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 			out.println("</div>");
 			out.println("</div>");
 

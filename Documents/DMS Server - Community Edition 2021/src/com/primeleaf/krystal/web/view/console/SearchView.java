@@ -67,7 +67,7 @@ public class SearchView extends WebView {
 		out.println("<div id=\"searchresults\">");
 
 		out.println("<div class=\"card   \">");
-		out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-search\"></i> Search Results : " + searchText + " </h4></div>");
+		out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-search\"></i> Search Results : " + searchText + " </div>");
 		out.println("</div>");
 
 		printDocumentClasses();
@@ -81,7 +81,7 @@ public class SearchView extends WebView {
 		out.println("</div>");
 
 		String[] searchWords = searchText.split("\\s+");
-		String classNames[] = {"highlight","btn-danger","btn-success","btn-warning","btn-primary"};
+		String classNames[] = {"highlight","btn-danger","btn-success","btn-warning","btn-dark"};
 		int i = 0;
 		for(String searchWord : searchWords){
 			String className = classNames[i % 5];
@@ -131,19 +131,19 @@ public class SearchView extends WebView {
 			if(hits.size() > 0 ) {
 				out.println("<div class=\"card   \">");
 				out.println("<div class=\"card-header\">");
-				out.println("<div class=\"row\">");
+				out.println("<div class=\"d-flex justify-content-between\">");
 				out.println("<div class=\"col-xs-8\">");
-				out.println("<h4><i class=\"bi bi-file-earmark \"></i> "+StringEscapeUtils.escapeHtml4(documentClass.getClassName()) + "");
-				out.println(" - "+ StringEscapeUtils.escapeHtml4(documentClass.getClassDescription())+"</h4>");
+				out.println("<i class=\"bi bi-file-earmark \"></i> "+StringEscapeUtils.escapeHtml4(documentClass.getClassName()) + "");
+				out.println(" - "+ StringEscapeUtils.escapeHtml4(documentClass.getClassDescription()));
 				out.println("</div>");
 				out.println("<div class=\"col-xs-4 text-end\">");
-				out.println("<h4>"+ hits.size() + " Documents</h4>");
+				out.println(hits.size() + " Documents");
 				out.println("</div>");
 				out.println("</div>");//row
 				out.println("</div>");//card-header
 
 				out.println("<div class=\"table-responsive\">");
-				out.println("<table class=\"table table-striped\">");
+				out.println("<table class=\"table table-sm table-striped\">");
 				out.println("<thead>");
 				out.println("<tr>");
 				out.println("<th class=\"text-center\">Document ID</th>");

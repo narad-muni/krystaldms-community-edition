@@ -86,7 +86,7 @@ public class ViewDocumentView extends WebView {
 			printBreadCrumbs();
 		}
 
-		out.println("<h3><i class=\"bi bi-folder2-open\"></i> "+StringEscapeUtils.escapeHtml4(documentClass.getClassName()));
+		out.println("<h3><i class=\"bi text-primary bi-folder2-open\"></i> "+StringEscapeUtils.escapeHtml4(documentClass.getClassName()));
 		out.println("<small>");
 		out.println("<span class=\"badge bg-success tip\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Document ID\">"+documentRevision.getDocumentId()+"</span>&nbsp;");
 		out.println("<span class=\"badge bg-primary tip\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"Revision ID\">"+documentRevision.getRevisionId()+"</span>&nbsp;");
@@ -113,9 +113,28 @@ public class ViewDocumentView extends WebView {
 		}
 
 		out.println("<ul class=\"nav nav-tabs\" id=\"documenTabs\">");
-		out.println("<li class=\"nav-item\" ><a href=\"#document\" data-bs-toggle=\"tab\" class=\"nav-link active\" ><img src=\"/images/"+StringHelper.getIconFileNameForExtension(document.getExtension())+".gif\" >&nbsp;Document</a></li>");
-		out.println("<li class=\"nav-item\" ><a href=\"#documentNotes\" data-bs-toggle=\"tab\" class=\"nav-link internal\"  datatarget=\"#resultNotes\" data-src=\"/console/documentnotes?documentid="+document.getDocumentId()+"&revisionid="+documentRevision.getRevisionId()+"\"><i class=\"bi bi-chat-left-dots\"></i> Notes</a></li>");
-		out.println("<li class=\"nav-item\" ><a href=\"#accessHistory\" data-bs-toggle=\"tab\" class=\"nav-link internal\"  datatarget=\"#resultAccessHistory\" data-src=\"/console/accesshistory?documentid="+document.getDocumentId()+"&revisionid="+documentRevision.getRevisionId()+"\"><i class=\"bi bi-clock\"></i> Access History</a></li>");
+		
+		out.print("<li class=\"nav-item\" role=\"presentation\">");
+		out.print("<button class=\"nav-link p-2 active\" data-bs-target=\"#document\" data-bs-toggle=\"tab\" type=\"button\" role=\"tab\"> ");
+		out.print("<img src=\"/images/"+StringHelper.getIconFileNameForExtension(document.getExtension())+".gif\" style=\"margin-bottom:1px;\"/>");
+		out.print("&nbsp;Document");
+		out.print("</button>");
+		out.print("</li>");
+		
+		out.print("<li class=\"nav-item\" role=\"presentation\">");
+		out.print("<button class=\"nav-link p-2 internal\" data-bs-target=\"#documentNotes\" data-bs-toggle=\"tab\" type=\"button\" role=\"tab\" datatarget=\"#resultNotes\" data-src=\"/console/documentnotes?documentid="+document.getDocumentId()+"&revisionid="+documentRevision.getRevisionId()+"\">");
+		out.print("<i class=\"bi bi-chat-left-dots h6 me-1 text-primary\"></i> ");
+		out.print("Notes");
+		out.print("</button>");
+		out.print("</li>");
+		
+		out.print("<li class=\"nav-item\" role=\"presentation\">");
+		out.print("<button class=\"nav-link p-2 internal\" data-bs-target=\"#accessHistory\" data-bs-toggle=\"tab\" type=\"button\" role=\"tab\" datatarget=\"#resultAccessHistory\" data-src=\"/console/accesshistory?documentid="+document.getDocumentId()+"&revisionid="+documentRevision.getRevisionId()+"\">");
+		out.print("<i class=\"bi bi-clock h6 me-1 text-primary\"></i> ");
+		out.print("Access History");
+		out.print("</button>");
+		out.print("</li>");
+		
 		out.println("</ul>");
 		out.println("<div class=\"tab-content\">");
 		out.println("<div class=\"tab-pane in active\" id=\"document\"><br/>");
@@ -148,7 +167,7 @@ public class ViewDocumentView extends WebView {
 				out.println("</div>");
 				out.println("<input type=\"hidden\"  name=\"documentid\"  	value=\""+ document.getDocumentId() + "\" />");
 				out.println("<input type=\"hidden\"  name=\"revisionid\"  	value=\""+ documentRevision.getRevisionId() + "\" />");
-				out.println("<input type=\"submit\"  name=\"btnSubmit\" 	value=\"Share Document\" 	class=\"btn btn-sm btn-primary\"  data-loading-text=\"Sharing Document...\"/>");
+				out.println("<input type=\"submit\"  name=\"btnSubmit\" 	value=\"Share Document\" 	class=\"btn btn-sm btn-dark\"  data-loading-text=\"Sharing Document...\"/>");
 				out.println("</form>");
 				out.println("</div>");//card-body
 				out.println("</div>");//panel
@@ -170,7 +189,31 @@ public class ViewDocumentView extends WebView {
 			}else{
 				lastAccessed = document.getLastAccessed().toString();
 			}
-
+			
+			if(view.trim().length() <= 0 ){
+				out.println("<div class=\"card card-body pr-2 pr-2\"><div class=\"card-header mb-1\"><i class=\"bi me-1 bi-disc\"></i>Actions</div>");
+				if(acl.canDownload()){
+					out.println("<a href=\"/console/downloaddocument?documentid="+document.getDocumentId()+"&revisionid="+documentRevision.getRevisionId()+"\" class=\"btn btn-dark btn-block m-1\" title=\"Download Document\" ><i class=\"bi bi-download text-white\"></i> Download Document</a>");
+				}
+				if(documentClass.isRevisionControlEnabled()){
+					if(document.getStatus().equalsIgnoreCase(Hit.STATUS_AVAILABLE) && isHeadRevision){
+						if(acl.canCheckout()){
+							out.println("<a href=\"/console/checkoutdocument?documentid="+document.getDocumentId()+"\" class=\"btn btn-dark btn-block m-1\" title=\"Check Out Document\" ><i class=\"bi bi-lock text-white\"></i> Check Out Document</a>");
+						}
+					}
+					if(document.getStatus().equalsIgnoreCase(Hit.STATUS_LOCKED)){
+						out.println("<a href=\"/console/cancelcheckout?documentid="+document.getDocumentId()+"\" class=\"btn  btn-dark btn-block confirm m-1\" title=\"Are you sure, you want to cancel checkout of this document?\" ><i class=\"bi bi-unlock-alt text-white\"></i> Cancel Checkout</a>");
+						if(acl.canCheckin()){
+							out.println("<a href=\"/console/checkindocument?documentid="+document.getDocumentId()+"\" class=\"btn  btn-dark btn-block m-1\" title=\"Check In\" ><i class=\"bi bi-arrow-right text-white\"></i> Check In</a>");
+						}
+					}
+					out.println("<a href=\"/console/revisionhistory?documentid="+document.getDocumentId()+"\" data-bs-toggle=\"modal\" data-bs-target=\"#revisionHistoryModal\" class=\"btn  btn-dark btn-block m-1 \" title=\"Revision History\"><i class=\"bi bi-clock text-white\"></i> Revision History</a>");
+				}
+				if(acl.canDelete() && document.getStatus().equalsIgnoreCase(Hit.STATUS_AVAILABLE) && isHeadRevision){
+					out.println("<a href=\"/console/deletedocument?documentid="+document.getDocumentId()+"\" class=\"btn btn-danger btn-block confirm text-white m-1\" title=\"Are you sure, you want to mark this document as deleted?\" ><i class=\"bi bi-trash text-white\"></i> Delete Document</a>");
+				}
+				out.println("</div>");//card card-body pr-2 pr-2
+			}
 
 			if(acl.canWrite() && document.getStatus().equalsIgnoreCase(Hit.STATUS_AVAILABLE) && isHeadRevision){
 				out.println("<div class=\"card   \">");
@@ -198,9 +241,15 @@ public class ViewDocumentView extends WebView {
 						out.println("<span class=\"input-group-text\"><i class=\"bi bi-calendar-date\"></i></span>");
 						out.println("</div>");
 					}else if(indexDefinition.getIndexType().equals(IndexDefinition.INDEXTYPE_NUMBER)){
+						out.println("<div class=\"input-group\">");
 						out.println("<input type=\"text\" class=\"number  form-control "+ required +" autocomplete\"    id=\""+indexDefinition.getIndexColumnName()+"\" name=\""+indexDefinition.getIndexColumnName()+"\" value=\""+value+"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"   cid=\""+documentClass.getClassId()+"\">");
+						out.println("<span class=\"input-group-text\"><i class=\"bi bi-hash\"></i></span>");
+						out.println("</div>");
 					}else {
+						out.println("<div class=\"input-group\">");
 						out.println("<input type=\"text\" class=\"autocomplete form-control "+ required +" \" id=\""+indexDefinition.getIndexColumnName()+"\"  name=\""+indexDefinition.getIndexColumnName()+"\" value=\""+value+"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"  cid=\""+documentClass.getClassId()+"\">");
+						out.println("<span class=\"input-group-text\"><i class=\"bi bi-type\"></i></span>");
+						out.println("</div>");
 					}
 					out.println("</div>");
 				}
@@ -216,7 +265,7 @@ public class ViewDocumentView extends WebView {
 
 				out.println("<input type=\"hidden\" name=\"revisionid\" value=\""+documentRevision.getRevisionId()+"\">");
 				out.println("<input type=\"hidden\"  name=\"documentid\"  value=\""+ document.getDocumentId() + "\"/>");
-				out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+				out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 
 				out.println("</form>");
 				out.println("</div>");//card-body
@@ -227,7 +276,7 @@ public class ViewDocumentView extends WebView {
 				out.println("<div class=\"card-header\"><i class=\"bi bi-check-square\"></i> Document Indexes</div>");
 				out.println("<div class=\"card-body\">");
 				out.println("<div class=\"table-responsive\">");
-				out.println("<table class=\"table table-hover\">");
+				out.println("<table class=\"table table-sm table-hover\">");
 				if(! documentIndexes.keySet().isEmpty()){
 					out.println("<thead>");
 					out.println("<tr>");
@@ -260,7 +309,7 @@ public class ViewDocumentView extends WebView {
 			out.println("<div class=\"card   \">");
 			out.println("<div class=\"card-header\"><i class=\"bi bi-file-earmark\"></i> Document Properties</div>");
 			out.println("<div class=\"table-responsive\">");
-			out.println("<table class=\"table table-hover\">");
+			out.println("<table class=\"table table-sm table-hover\">");
 			out.println("<thead><tr><th>Property</th><th>Value</th></tr></thead>");
 			out.println("<tbody><tr><td>Created By</td><td> "+ document.getCreatedBy()+"</td></tr>");
 			out.println("<tr><td>Created On</td><td>" +  StringHelper.getFriendlyDateTime(document.getCreated()) +"</td></tr>");
@@ -282,36 +331,36 @@ public class ViewDocumentView extends WebView {
 					+ "</div>");
 			out.println("<input type=\"hidden\"  name=\"documentid\"  	value=\""+ document.getDocumentId() + "\" />");
 			out.println("<input type=\"hidden\"  name=\"revisionid\"  	value=\""+ documentRevision.getRevisionId() + "\" />");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  	value=\""+ "Save" + "\" 	class=\"btn btn-sm btn-primary\"/>");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  	value=\""+ "Save" + "\" 	class=\"btn btn-sm btn-dark\"/>");
 			out.println("</form>");
 			out.println("</div>");//card-body
 			out.println("</div>");//panel
 
 
-			if(view.trim().length() <= 0 ){
-				out.println("<div class=\"card card-body pr-2 pr-2\">");
-				if(acl.canDownload()){
-					out.println("<a href=\"/console/downloaddocument?documentid="+document.getDocumentId()+"&revisionid="+documentRevision.getRevisionId()+"\" class=\"btn btn-primary btn-block m-1\" title=\"Download Document\" ><i class=\"bi bi-download text-white\"></i> Download Document</a>");
-				}
-				if(documentClass.isRevisionControlEnabled()){
-					if(document.getStatus().equalsIgnoreCase(Hit.STATUS_AVAILABLE) && isHeadRevision){
-						if(acl.canCheckout()){
-							out.println("<a href=\"/console/checkoutdocument?documentid="+document.getDocumentId()+"\" class=\"btn btn-primary btn-block m-1\" title=\"Check Out Document\" ><i class=\"bi bi-lock text-white\"></i> Check Out Document</a>");
-						}
-					}
-					if(document.getStatus().equalsIgnoreCase(Hit.STATUS_LOCKED)){
-						out.println("<a href=\"/console/cancelcheckout?documentid="+document.getDocumentId()+"\" class=\"btn  btn-primary btn-block confirm m-1\" title=\"Are you sure, you want to cancel checkout of this document?\" ><i class=\"bi bi-unlock-alt text-white\"></i> Cancel Checkout</a>");
-						if(acl.canCheckin()){
-							out.println("<a href=\"/console/checkindocument?documentid="+document.getDocumentId()+"\" class=\"btn  btn-primary btn-block m-1\" title=\"Check In\" ><i class=\"bi bi-arrow-right text-white\"></i> Check In</a>");
-						}
-					}
-					out.println("<a href=\"/console/revisionhistory?documentid="+document.getDocumentId()+"\" data-bs-toggle=\"modal\" data-bs-target=\"#revisionHistoryModal\" class=\"btn  btn-primary btn-block m-1 \" title=\"Revision History\"><i class=\"bi bi-clock text-white\"></i> Revision History</a>");
-				}
-				if(acl.canDelete() && document.getStatus().equalsIgnoreCase(Hit.STATUS_AVAILABLE) && isHeadRevision){
-					out.println("<a href=\"/console/deletedocument?documentid="+document.getDocumentId()+"\" class=\"btn btn-danger btn-block confirm text-white m-1\" title=\"Are you sure, you want to mark this document as deleted?\" ><i class=\"bi bi-trash text-white\"></i> Delete Document</a>");
-				}
-				out.println("</div>");//card card-body pr-2 pr-2
-			}
+//			if(view.trim().length() <= 0 ){
+//				out.println("<div class=\"card card-body pr-2 pr-2\">");
+//				if(acl.canDownload()){
+//					out.println("<a href=\"/console/downloaddocument?documentid="+document.getDocumentId()+"&revisionid="+documentRevision.getRevisionId()+"\" class=\"btn btn-dark btn-block m-1\" title=\"Download Document\" ><i class=\"bi bi-download text-white\"></i> Download Document</a>");
+//				}
+//				if(documentClass.isRevisionControlEnabled()){
+//					if(document.getStatus().equalsIgnoreCase(Hit.STATUS_AVAILABLE) && isHeadRevision){
+//						if(acl.canCheckout()){
+//							out.println("<a href=\"/console/checkoutdocument?documentid="+document.getDocumentId()+"\" class=\"btn btn-dark btn-block m-1\" title=\"Check Out Document\" ><i class=\"bi bi-lock text-white\"></i> Check Out Document</a>");
+//						}
+//					}
+//					if(document.getStatus().equalsIgnoreCase(Hit.STATUS_LOCKED)){
+//						out.println("<a href=\"/console/cancelcheckout?documentid="+document.getDocumentId()+"\" class=\"btn  btn-dark btn-block confirm m-1\" title=\"Are you sure, you want to cancel checkout of this document?\" ><i class=\"bi bi-unlock-alt text-white\"></i> Cancel Checkout</a>");
+//						if(acl.canCheckin()){
+//							out.println("<a href=\"/console/checkindocument?documentid="+document.getDocumentId()+"\" class=\"btn  btn-dark btn-block m-1\" title=\"Check In\" ><i class=\"bi bi-arrow-right text-white\"></i> Check In</a>");
+//						}
+//					}
+//					out.println("<a href=\"/console/revisionhistory?documentid="+document.getDocumentId()+"\" data-bs-toggle=\"modal\" data-bs-target=\"#revisionHistoryModal\" class=\"btn  btn-dark btn-block m-1 \" title=\"Revision History\"><i class=\"bi bi-clock text-white\"></i> Revision History</a>");
+//				}
+//				if(acl.canDelete() && document.getStatus().equalsIgnoreCase(Hit.STATUS_AVAILABLE) && isHeadRevision){
+//					out.println("<a href=\"/console/deletedocument?documentid="+document.getDocumentId()+"\" class=\"btn btn-danger btn-block confirm text-white m-1\" title=\"Are you sure, you want to mark this document as deleted?\" ><i class=\"bi bi-trash text-white\"></i> Delete Document</a>");
+//				}
+//				out.println("</div>");//card card-body pr-2 pr-2
+//			}
 			out.println("</div>");//col-sm-3
 			out.println("</div>");//row
 			out.println("</div>");//tab-pane active #document
@@ -357,7 +406,7 @@ public class ViewDocumentView extends WebView {
 
 			out.println("<input type=\"hidden\" name=\"DOCID\" value=\""+document.getDocumentId()+"\">");
 			out.println("<input type=\"hidden\" name=\"REVISIONID\" value=\""+documentRevision.getRevisionId()+"\">");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 			out.println("</form>");
 			out.println("</div>");//col-sm-3
 			out.println("</div>");//row
@@ -383,18 +432,16 @@ public class ViewDocumentView extends WebView {
 
 			out.println("<div class=\"mb-3 row\">");
 			out.println("<div class=\"btn-group\" data-bs-toggle=\"buttons\">");
-			out.println("<label class=\"btn btn-sm btn-primary active\">");
-			out.println("<input type=\"radio\" id=\"radNoteType1\" name=\"radNoteType\" value=\"P\" checked>Public");
-			out.println("</label>");
-			out.println("<label class=\"btn btn-sm btn-primary\">");
-			out.println("<input type=\"radio\" id=\"radNoteType2\" name=\"radNoteType\"  value=\"U\">Private");
-			out.println("</label>");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radNoteType1\" name=\"radNoteType\" value=\"P\" checked>");
+			out.println("<label for=\"radNoteType1\" class=\"btn btn-outline-dark\">Public</label>");
+			out.println("<input class=\"btn-check\" type=\"radio\" id=\"radNoteType2\" name=\"radNoteType\"  value=\"U\">");
+			out.println("<label for=\"radNoteType2\" class=\"btn btn-outline-dark\">Private</label>");
 			out.println("</div>");
 			out.println("</div>");
 
 			out.println("<hr/>");
 			out.println("<input type=\"hidden\" name=\"documentid\" value=\""+document.getDocumentId()+"\">");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 
 			out.println("</form>");
 			out.println("</div>");//col-sm-3
@@ -431,7 +478,7 @@ public class ViewDocumentView extends WebView {
 			out.println("</div>");
 
 			out.println("<input type=\"hidden\" name=\"documentid\" value=\""+document.getDocumentId()+"\">");
-			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Show Access History\" class=\"btn btn-sm btn-primary btn-block\">");
+			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Show Access History\" class=\"btn btn-sm btn-dark btn-block\">");
 
 			out.println("</form>");
 			out.println("</div>");//col-sm-3

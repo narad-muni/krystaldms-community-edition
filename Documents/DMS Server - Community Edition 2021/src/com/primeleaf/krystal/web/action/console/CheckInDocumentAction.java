@@ -29,6 +29,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import org.apache.commons.validator.GenericValidator;
 import org.apache.tomcat.util.http.fileupload.FileItem;
@@ -66,6 +67,7 @@ public class CheckInDocumentAction implements Action {
 		User loggedInUser = (User)session.getAttribute(HTTPConstants.SESSION_KRYSTAL);
 		try{
 			if("POST".equalsIgnoreCase(request.getMethod())){
+				Part filePart = request.getPart("fileDocument");
 				String errorMessage;
 				String tempFilePath = System.getProperty("java.io.tmpdir");
 
@@ -90,38 +92,19 @@ public class CheckInDocumentAction implements Action {
 				
 				upload.setHeaderEncoding(HTTPConstants.CHARACTER_ENCODING);
 				//Create a file upload progress listener
-
-				Iterator iter = items.iterator();
-				FileItem item = null;
-				InputStream file = null;
-				while (iter.hasNext()) {
-					item = (FileItem) iter.next();
-					if (item.isFormField()) {
-						String name = item.getFieldName();
-						String value = item.getString(HTTPConstants.CHARACTER_ENCODING);
-						if (name.equals("documentid")) {
-							try{
-								documentId=Integer.parseInt(value);
-							}catch(Exception ex){
-								request.setAttribute(HTTPConstants.REQUEST_ERROR, "Invalid input");
-								return (new CheckInDocumentView(request,response));
-							}
-						} else if (name.equals("revisionid")) {
-							revisionId = value;
-						} else if (name.equals("txtNote")) {
-							comments = value;
-						}else if ("version".equalsIgnoreCase(name)){
-							version = value;
-						}
-					} else {
-						fileName = item.getName();
-						ext = fileName.substring(fileName.lastIndexOf(".") + 1).toUpperCase();
-//						file = new File(tempFilePath+"."+ext);
-						file = item.getInputStream();
-//						item.write(file);
-					}
+				
+				InputStream file = filePart.getInputStream();
+				try{
+					documentId=Integer.parseInt(request.getParameter("documentid"));
+				}catch(Exception ex){
+					request.setAttribute(HTTPConstants.REQUEST_ERROR, "Invalid input");
+					return (new CheckInDocumentView(request,response));
 				}
-				iter = null;
+				revisionId = request.getParameter("revisionid");
+				comments = request.getParameter("txtNote");
+				version = request.getParameter("version");
+				fileName = filePart.getSubmittedFileName();
+				ext = fileName.substring(fileName.lastIndexOf(".") + 1).toUpperCase();
 
 				Document document =  DocumentDAO.getInstance().readDocumentById(documentId);
 				if(document == null){

@@ -51,7 +51,7 @@ public class ReportsView extends WebView {
 		printBreadCrumbs();
 		out.println("<div class=\"card   \">");
 		out.println("<div class=\"card-header\">");
-		out.println("<h4><i class=\"bi  bi-bar-chart\"></i> System Reports</h4>");
+		out.println("<i class=\"bi text-primary bi-bar-chart\"></i> System Reports");
 		out.println("</div>");
 		out.println("<div class=\"card-body\">");
 		

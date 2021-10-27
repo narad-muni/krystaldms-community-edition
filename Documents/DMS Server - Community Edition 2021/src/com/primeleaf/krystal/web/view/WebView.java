@@ -63,32 +63,32 @@ public abstract class WebView {
 	}
 
 	public void printError(String message) throws Exception{
-		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-danger\">"+ message + "</div>");
+		out.println("<div class=\"alert d-flex align-items-center alert-danger\"><i class=\"me-2 bi bi-x-lg\"></i>"+ message + "</div>");
 	}
 	public void printSuccess(String message) throws Exception{
-		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-success\"></div>");
+		out.println("<div class=\"alert d-flex align-items-center alert-success\"><i class=\"me-2 bi bi-check-lg\"></i>"+StringEscapeUtils.escapeHtml4(message) + "</div>");
 	}
 	public void printInfo(String message) throws Exception{
-		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-info\">"+StringEscapeUtils.escapeHtml4(message) + "</div>");
+		out.println("<div class=\"alert d-flex align-items-center alert-info\"><i class=\"me-2 bi bi-info-circle h6\"></i>"+StringEscapeUtils.escapeHtml4(message) + "</div>");
 	}
 	public void printWarning(String message) throws Exception{
-		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-warning\">"+StringEscapeUtils.escapeHtml4(message) + "</div>");
+		out.println("<div class=\"alert d-flex align-items-center alert-warning\"><i class=\"me-2 bi bi-exclamation-triangle h6\"></i>"+StringEscapeUtils.escapeHtml4(message) + "</div>");
 	}
 	public void printErrorDismissable(String message) throws Exception{
-		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-danger alert-dismissable\"><span>"+StringEscapeUtils.escapeHtml4(message)+"</span><button type=\"button\" class=\"btn\" data-bs-dismiss=\"alert\" aria-hidden=\"true\"><i class=\"bi-x-circle text-white\"></i></button></div>");
+		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-danger alert-dismissable\"><span><i class=\"me-2 bi bi-x-lg\"></i>"+StringEscapeUtils.escapeHtml4(message)+"</span><button type=\"button\" class=\"btn\" data-bs-dismiss=\"alert\" aria-hidden=\"true\"><i class=\"bi-x-circle text-white\"></i></button></div>");
 	}
 	public void printSuccessDismissable(String message) throws Exception{
-		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-success alert-dismissable\"><span>"+StringEscapeUtils.escapeHtml4(message)+"</span><button type=\"button\" class=\"btn\" data-bs-dismiss=\"alert\" aria-hidden=\"true\"><i class=\"bi-x-circle text-white\"></i></button></div>");
+		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-success alert-dismissable\"><span> <i class=\"me-2 bi bi-check-lg\"></i>"+StringEscapeUtils.escapeHtml4(message)+"</span><button type=\"button\" class=\"btn\" data-bs-dismiss=\"alert\" aria-hidden=\"true\"><i class=\"bi-x-circle text-white\"></i></button></div>");
 	}
 	public void printInfoDismissable(String message) throws Exception{
-		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-info alert-dismissable\"><span>"+StringEscapeUtils.escapeHtml4(message)+"</span><button type=\"button\" class=\"btn\" data-bs-dismiss=\"alert\" aria-hidden=\"true\"><i class=\"bi-x-circle text-white\"></i></button></div>");
+		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-info alert-dismissable\"><span><i class=\"me-2 bi bi-info-circle h6\"></i>"+StringEscapeUtils.escapeHtml4(message)+"</span><button type=\"button\" class=\"btn\" data-bs-dismiss=\"alert\" aria-hidden=\"true\"><i class=\"bi-x-circle text-white\"></i></button></div>");
 	}
 	public void printWarningDismissable(String message) throws Exception{
-		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-warning alert-dismissable\"><span>"+StringEscapeUtils.escapeHtml4(message)+"</span><button type=\"button\" class=\"btn\" data-bs-dismiss=\"alert\" aria-hidden=\"true\"><i class=\"bi-x-circle text-white\"></i></button></div>");
+		out.println("<div class=\"alert d-flex justify-content-between align-items-center alert-warning alert-dismissable\"><span><i class=\"me-2 bi bi-exclamation-triangle h6></i>\""+StringEscapeUtils.escapeHtml4(message)+"</span><button type=\"button\" class=\"btn\" data-bs-dismiss=\"alert\" aria-hidden=\"true\"><i class=\"bi-x-circle text-white\"></i></button></div>");
 	}
 
 	public void showCriteriaDropdown(String indexName,byte selectedOperator)throws Exception{
-		out.println("<select id=\"operator_"+indexName+"\" name=\"operator_"+indexName+"\" class=\"operator form-control\"> ");
+		out.println("<select id=\"operator_"+indexName+"\" name=\"operator_"+indexName+"\" class=\"operator form-select form-control\"> ");
 		if(selectedOperator == IndexDefinition.OPERATOR_IS){
 			out.println("<option value=\""+IndexDefinition.OPERATOR_IS+"\" selected>Is</option>");
 		}else{
@@ -137,7 +137,7 @@ public abstract class WebView {
 		out.println("</select>");
 	}
 	public void showMetaCriteriaDropdown(String indexName)throws Exception{
-		out.println("<select id=\"operator_"+indexName+"\" name=\"operator_"+indexName+"\" class=\"operator form-control\"> ");
+		out.println("<select id=\"operator_"+indexName+"\" name=\"operator_"+indexName+"\" class=\"operator form-select form-control\"> ");
 		out.println("<option value=\""+IndexDefinition.OPERATOR_BETWEEN+"\">Between</option>");
 		out.println("</select>");
 	}

@@ -62,13 +62,13 @@ public class PermissionsView extends WebView {
 		out.println("<div class=\"card-header\">");
 		out.println("<div class=\"row\">");
 		out.println("<div class=\"col-sm-6\">");
-		out.println("<h4><i class=\"bi  bi-folder2-open\"></i> ");
+		out.println("<i class=\"bi text-primary bi-folder2-open\"></i> ");
 		out.println(StringEscapeUtils.escapeHtml4(documentClass.getClassName())+" - ");
 		out.println("<small>"+StringEscapeUtils.escapeHtml4(documentClass.getClassDescription()) + "</small>");
-		out.println("</h4>");
+		out.println("");
 		out.println("</div>");
 		out.println("<div class=\"col-sm-6 text-end\">");
-		out.println("<h4><i class=\"bi bi-shield\"></i> Assign Permissions");
+		out.println("<i class=\"bi text-primary bi-shield\"></i> Assign Permissions");
 		out.println("</div>");
 		out.println("</div>");//row
 		out.println("</div>");//card-header
@@ -134,7 +134,7 @@ public class PermissionsView extends WebView {
 		out.println("<div class=\"mb-3 row\">");
 		out.println("<div class=\"col-sm-offset-2 col0\">");
 		out.println("<input type=\"hidden\" name=\"classid\" value=\""+documentClass.getClassId()+"\"/>");
-		out.println("<input type=\"submit\" name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+		out.println("<input type=\"submit\" name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</form>");//card   body

@@ -73,7 +73,7 @@ public class CheckoutDocumentView extends WebView {
 			printBreadCrumbs();
 			
 			out.println("<div class=\"card   \">");
-			out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-lock text-danger\"></i> Checkout</h4></div>");
+			out.println("<div class=\"card-header\"><i class=\"bi bi-lock text-primary\"></i> Checkout</div>");
 			out.println("<div class=\"card-body\">");
 			if(request.getAttribute(HTTPConstants.REQUEST_MESSAGE) != null){
 				out.println("<h5><i class=\"bi  bi-check-circle text-success\"></i> "+request.getAttribute(HTTPConstants.REQUEST_MESSAGE) +"</h5>");

@@ -68,10 +68,10 @@ public class AccessHistoryView extends WebView {
 			ArrayList<AuditLogRecord>  accessHistory = (ArrayList<AuditLogRecord>)request.getAttribute("ACCESSHISTORY");
 			
 			if(accessHistory.size() > 0){
-				out.println("<div class=\"card   \">");
-				out.println("<div class=\"card-header\"><h4><i class=\"bi bi-clock \"></i> Access History</h4></div>");
+				out.println("<div class=\"card\">");
+				out.println("<div class=\"card-header\"><i class=\"bi text-primary bi-clock \"></i> Access History</div>");
 				out.println("<div class=\"table-responsive\">");
-				out.println("<table class=\"table table-condensed table-striped\">");
+				out.println("<table class=\"table table-sm table-condensed table-striped\">");
 				out.println("<thead>");
 				out.println("<tr>");
 				out.println("<th>Action</th>");

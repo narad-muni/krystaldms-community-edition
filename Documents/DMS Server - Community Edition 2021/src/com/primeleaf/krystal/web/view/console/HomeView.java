@@ -54,11 +54,9 @@ public class HomeView extends WebView {
 	}
 
 	private void printConsole() throws Exception{
-		out.println("<div class=\"card\">");
-		out.println("<div class=\"card-header\">");
-		out.println("<h3><i class=\"bi bi-house \"></i> My Workspace</h3>");
-		out.println("</div>");
-		out.println("<div class=\"card-body\">");
+		out.println("<ol class=\"breadcrumb\">");
+		out.println("<li class=\"breadcrumb-item active\">My Workspace</li>");
+		out.println("</ol>");
 
 		if(request.getAttribute(HTTPConstants.REQUEST_ERROR) != null){
 			printErrorDismissable((String)request.getAttribute(HTTPConstants.REQUEST_ERROR));
@@ -79,50 +77,75 @@ public class HomeView extends WebView {
 		out.println("</div>");
 		out.println("</div>");
 		
-		out.println("</div>");//card-body
-		out.println("</div>");//panel
 	}
 
 	@SuppressWarnings("unchecked")
 	private void printDocumentClasses(){
-		out.println("<div class=\"card   \">");
+		out.println("<div class=\"card\">");
 		out.println("<div class=\"card-header\">");
-		out.println("<h5><i class=\"bi bi-folder2-open  \"></i> Document Classes</h5>");
+		out.println("<i class=\"bi bi-folder2-open text-primary\"></i> Document Classes");
 		out.println("</div>");//card-header
 		try {
 			ArrayList<DocumentClass> documentClasses = 	(ArrayList<DocumentClass>) request.getAttribute("DOCUMENTCLASSLIST");
 			if(documentClasses.size() > 0){
 				out.println("<ul class=\"list-group\">");
 				for(DocumentClass documentClass : documentClasses){
+					
 					ACL acl = (ACL)request.getAttribute(documentClass.getClassName()+"_ACL");
 					int documentCount = documentClass.getActiveDocuments();
-					out.println("<li class=\"list-group-item\">");
-					out.println("<div class=\"row\">");
-					out.println("<div class=\"col-xs-12 col-sm-10\">");
-					out.println("<a href=\"/console/opendocumentclass?classid="+documentClass.getClassId()+"\" class=\"\">");
-					out.println("<h3>"+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"</h3>");
-					out.println("</a>");
-					out.println("<p><h6>");
-					out.println("<a href=\"/console/opendocumentclass?classid="+ documentClass.getClassId()+"\">View All ("+documentCount+") </a> | ");
-					out.println("<a href=\"/console/searchdocumentclass?classid="+ documentClass.getClassId()+"\">Search</a>");
+					
+					out.print("<li class=\"list-group-item list-group-item-action\">");
+					out.print("<div class=\"row\">");
+					out.print("<div class=\"col-lg-9\">");
+					out.print("<a href=\"/console/opendocumentclass?classid="+documentClass.getClassId()+"\" class=\"display-6 text-primary className\">");
+					out.print("<i class=\"bi bi-server text-primary me-1\"></i>"+documentClass.getClassName());
+					out.print("</a>");
+					out.print("<ul class=\"list-inline mt-2\">");
+					out.print("<li class=\"list-inline-item\"><a href=\"/console/searchdocumentclass?classid="+documentClass.getClassId()+"\" title=\"Search\"><i class=\"bi bi-binoculars me-1\"></i>Search</a></li>");
 					if(acl.canCreate()){
-						out.println(" | <a href=\"/console/newdocument?classid="+ documentClass.getClassId()+"\">Add Document</a>");
+						out.print("<li class=\"list-inline-item\"><a href=\"/console/newdocument?classid="+documentClass.getClassId()+"\" title=\"Add Document\"><i class=\"bi bi-file-earmark-arrow-up me-1\"></i>Add Document</a></li>");
 					}
-					out.println("</h6></p>");
-					out.println("</div>");
-
-					out.println("<div class=\"col-xs-12 col-sm-2 text-end\">");
-					out.println("<a href=\"/console/opendocumentclass?classid="+ documentClass.getClassId()+"\" title=\"Total Documents\">");
-					out.println("<h3 class=\"odometer totaldocs"+documentClass.getClassId()+"\">0</h3>");
+					out.print("<li class=\"list-inline-item\"><a href=\"/console/opendocumentclass?classid="+documentClass.getClassId()+"\" title=\"View All\"><i class=\"bi bi-eye me-1\"></i>View All ("+documentCount+")</a></li></ul>");
+					out.print("</div>");
+					out.print("<div class=\"col-lg-3 d-none d-sm-block text-end\">");
+					out.print("<a href=\"/console/opendocumentclass?classid=2\" title=\"\" class=\"tip\" data-toggle=\"tooltip\" data-placement=\"left\" data-bs-original-title=\"Available Documents\">");
+					out.print("<span class=\"display-4 totaldocs"+documentClass.getClassId()+" odometer odometer-auto-theme\">0</span>");
+					out.print("</a>");
 					if(documentCount > 0 ){
 						out.println("<script>setTimeout(function(){$('.totaldocs"+documentClass.getClassId()+"').html('"+documentCount+"');},1000);</script>");
 					}
-					out.println("<p><h6>Total Documents</h6></p>");
-					out.println("</a>");
-					out.println("</div>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</li>");
 
-					out.println("</div>");
-					out.println("</li>");
+					
+//					out.println("<li class=\"list-group-item\">");
+//					out.println("<div class=\"row\">");
+//					out.println("<div class=\"col-xs-12 col-sm-10\">");
+//					out.println("<a href=\"/console/opendocumentclass?classid="+documentClass.getClassId()+"\" class=\"\">");
+//					out.println("<h3>"+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"</h3>");
+//					out.println("</a>");
+//					out.println("<p><h6>");
+//					out.println("<a href=\"/console/opendocumentclass?classid="+ documentClass.getClassId()+"\">View All ("+documentCount+") </a> | ");
+//					out.println("<a href=\"/console/searchdocumentclass?classid="+ documentClass.getClassId()+"\">Search</a>");
+//					if(acl.canCreate()){
+//						out.println(" | <a href=\"/console/newdocument?classid="+ documentClass.getClassId()+"\">Add Document</a>");
+//					}
+//					out.println("</h6></p>");
+//					out.println("</div>");
+//
+//					out.println("<div class=\"col-xs-12 col-sm-2 text-end\">");
+//					out.println("<a href=\"/console/opendocumentclass?classid="+ documentClass.getClassId()+"\" title=\"Total Documents\">");
+//					out.println("<h3 class=\"odometer totaldocs"+documentClass.getClassId()+"\">0</h3>");
+//					if(documentCount > 0 ){
+//						out.println("<script>setTimeout(function(){$('.totaldocs"+documentClass.getClassId()+"').html('"+documentCount+"');},1000);</script>");
+//					}
+//					out.println("<p><h6>Total Documents</h6></p>");
+//					out.println("</a>");
+//					out.println("</div>");
+//
+//					out.println("</div>");
+//					out.println("</li>");
 				}
 				out.println("</ul>");
 			}else{
@@ -142,7 +165,7 @@ public class HomeView extends WebView {
 		try {
 			out.println("<div class=\"card   \">");
 			out.println("<div class=\"card-header\">");
-			out.println("<h5><i class=\"bi bi-lock  \"></i>  Checked Out Documents</h5>");
+			out.println("<i class=\"bi bi-lock text-primary\"></i>  Checked Out Documents");
 			out.println("</div>");
 
 			ArrayList<CheckedOutDocument> checkedOutDocumentList = 	(ArrayList<CheckedOutDocument>) request.getAttribute("CHECKOUTS");
@@ -177,9 +200,9 @@ public class HomeView extends WebView {
 	@SuppressWarnings("unchecked")
 	private void printBookmarks(){
 		try{
-			out.println("<div class=\"card   \">");
+			out.println("<div class=\"card\">");
 			out.println("<div class=\"card-header\">");
-			out.println("<h5><i class=\"bi bi-bookmark  \"></i> Bookmarks</h5>");
+			out.println("<i class=\"bi bi-bookmark text-primary\"></i> Bookmarks");
 			out.println("</div>");
 			ArrayList<Bookmark> bookmarkList = (ArrayList<Bookmark>)request.getAttribute("BOOKMARKS");
 			if(bookmarkList.size() > 0){
@@ -213,7 +236,7 @@ public class HomeView extends WebView {
 			if(documentClasses.size() >  0 ){
 				out.println("<div class=\"card   \">");
 				out.println("<div class=\"card-header\">");
-				out.println("<h5><i class=\"bi bi-pie-chart\"></i> Charts</h5>");
+				out.println("<i class=\"bi text-primary bi-pie-chart\"></i> Charts");
 				out.println("</div>");
 				out.println("<div class=\"card-body text-center\">");
 				out.println("<div id=\"homechart\" style=\"height:220px;\">");
@@ -241,9 +264,9 @@ public class HomeView extends WebView {
 	@SuppressWarnings("unchecked")
 	private void printRecentActivity(){
 		out.println("<div class=\"card   \">");
-		out.println("<div class=\"card-header\"><h5><i class=\"bi bi-clock   \"></i> Recent Access History</h5></div>");
+		out.println("<div class=\"card-header\"><i class=\"bi bi-clock text-primary\"></i> Recent Access History</div>");
 		out.println("<div class=\"table-responsive\">");
-		out.println("<table class=\"table table-condensed table-hover table-striped\">");
+		out.println("<table class=\"table table-sm ps-2 table-condensed table-hover table-striped\">");
 
 		int count=0; //for showing only first 10 records
 		int size=10;
@@ -276,24 +299,23 @@ public class HomeView extends WebView {
 	}
 
 	private void printGreetings(){
-		out.println("<div class=\"card   \">");
-		out.println("<div class=\"card-header\">");
-		out.println("<a href=\"/console/myprofile\">");
-		out.println("<h5><i class=\"bi bi-person \"></i> My Profile</h5>");
-		out.println("</a>");
-		out.println("</div>");//card-header
-		out.println("<div class=\"card-body\">");
-		out.println("<div class=\"row\">");
-		out.println("<div class=\"col-sm-3\">");
-		out.println("<img src=\"/console/profilepicture?size=medium&username="+loggedInUser.getUserName()+"\" class=\"thumbnail darkMode\"/ style=\"margin:10px 2px; 0px;\">");
-		out.println("</div>");
-		out.println("<div class=\"col-sm-9\">");
-		out.println("<h3>Hello "+StringEscapeUtils.escapeHtml4(loggedInUser.getRealName())+" ! </h3>");
 		String lastLogin = loggedInUser.getLastLoginDate()!=null?StringHelper.formatDate(loggedInUser.getLastLoginDate()):"0000-00-00 00:00:00";
-		out.println("<p>Your last login : "+lastLogin+"</p>");
-		out.println("</div>");
-		out.println("</div>");
-		out.println("</div>");
-		out.println("</div>");
+		
+		out.print("<div class=\"card mb-3 text-white d-none d-sm-block\">");
+		out.print("<div class=\"card-header bg-primary text-center\">");
+		out.print("<img src=\"/console/profilepicture?size=large&amp;username="+loggedInUser.getUserName()+"\" class=\"align-self-center rounded-circle p-2\">");
+		out.print("<h5>Welcome "+loggedInUser.getRealName()+" !</h5>");
+		out.print("</div>");
+		out.print("<ul class=\"list-group list-group-flush\">");
+		out.print("<li class=\"list-group-item list-group-item-action text-dark\">");
+		out.print("<i class=\"bi bi-clock me-1 h6\"></i>Last login : "+lastLogin);
+		out.print("</li>");
+		out.print("</ul>");
+		out.print("<div class=\"card-footer d-flex justify-content-between\">");
+		out.print("<a href=\"/console/myprofile\" class=\"card-link\" title=\"My Profile\"><i class=\"bi bi-person-badge h6 me-1\"></i>My Profile</a>");
+		out.print("<a href=\"/logout\" class=\"confirm card-link\" confirmationmessage=\"Are you sure, you want to logout?\" title=\"Logout\">Logout<i class=\"bi-box-arrow-in-left h6 ms-1\"></i></a>");
+		out.print("</div>");
+		out.print("</div>");
+
 	}
 }

@@ -61,7 +61,7 @@ public class NewDocumentView extends WebView {
 			printSuccess((String)request.getAttribute(HTTPConstants.REQUEST_MESSAGE));
 		}
 		out.println("<div class=\"card   \">");
-		out.println("<div class=\"card-header\"><h4><i class=\"bi  bi-cloud-upload\"></i> Add Document</h4></div>");
+		out.println("<div class=\"card-header\"><i class=\"bi text-primary me-2 bi-cloud-upload\"></i> Add Document</div>");
 		out.println("<div class=\"card-body\">");
 		
 		try {
@@ -69,7 +69,7 @@ public class NewDocumentView extends WebView {
 			int classId  =(Integer) request.getAttribute("CLASSID");
 
 			if(documentClasses.size() > 0){
-				out.println("<form action=\"/console/newdocument\" method=\"post\" id=\"frmNewDocument\" class=\"form-horizontal\" enctype=\"multipart/form-data\" target=\"uploadFrame\" accept-charset=\"utf-8\">");
+				out.println("<form autocomplete=\"off\" action=\"/console/newdocument\" method=\"post\" id=\"frmNewDocument\" class=\"form-horizontal\" enctype=\"multipart/form-data\" target=\"uploadFrame\" accept-charset=\"utf-8\">");
 				out.println("<div class=\"mb-3 row\">");
 				out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
 				out.println("<p>Fields marked with <span style='color:red'>*</span> are mandatory</p>");
@@ -79,7 +79,7 @@ public class NewDocumentView extends WebView {
 				out.println("<div class=\"mb-3 row\">");
 				out.println("<label for=\"classid\" class=\"col-sm-3 col-form-label\">Select Document Class <span style='color:red'>*</span></label>");
 				out.println("<div class=\"col-sm-9\">");
-				out.println("<select id=\"classid\" name=\"classid\" class=\"form-control required autosubmit\"\">");
+				out.println("<select id=\"classid\" name=\"classid\" class=\"form-control form-select required autosubmit\"\">");
 				out.println("<option value=\"0\">Select Document Class</option>");
 				String selected = "";
 				for(DocumentClass documentClass : documentClasses){
@@ -98,9 +98,9 @@ public class NewDocumentView extends WebView {
 
 					out.println("<div class=\"mb-3 row\">");
 					out.println("<label for=\"fileDocument\" class=\"col-sm-3 col-form-label\">Select Document <span style='color:red'>*</span></label>");
-					out.println("<div class=\"col-sm-9\">");
-					out.println("<input type=\"file\" name=\"fileDocument\" class=\"required\" title=\"Please select document to add\">");
-					out.println("</div>");
+					out.print("<div class=\"col-sm-9\">");
+					out.print("<input type=\"file\" name=\"fileDocument\" id=\"fileDocument\" class=\"form-control required isFileTypeAllowed\" title=\"Please select a document you wish to add / upload\">");
+					out.print("</div>");
 					out.println("</div>");
 
 					for(IndexDefinition indexDefinition :selectedDocumentClass.getIndexDefinitions()){
@@ -117,7 +117,7 @@ public class NewDocumentView extends WebView {
 						int size = indexDefinition.getIndexMaxLength()>60?60:indexDefinition.getIndexMaxLength();
 						String value = indexDefinition.getDefaultValue();
 						if(indexDefinition.getIndexType().equals(IndexDefinition.INDEXTYPE_DATE)){
-							out.println("<div class=\"col-sm-2\">");
+							out.println("<div class=\"col-sm-9\">");
 							out.println("<div class=\"input-group\">");
 							out.println("<input type=\"text\" class=\"shortdate isdate form-control "+ required +"\" size=\""+indexDefinition.getIndexMaxLength()+"\" name=\""+indexDefinition.getIndexColumnName()+"\" id=\""+indexDefinition.getIndexColumnName()+"\" value=\""+value+"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"  cid=\""+selectedDocumentClass.getClassId()+"\">");
 							out.println("<span class=\"input-group-text\"><i class=\"bi bi-calendar-date\"></i></span>");
@@ -125,11 +125,17 @@ public class NewDocumentView extends WebView {
 							out.println("</div>");
 						}else if(indexDefinition.getIndexType().equals(IndexDefinition.INDEXTYPE_NUMBER)){
 							out.println("<div class=\"col-sm-9\">");
+							out.println("<div class=\"input-group\">");
 							out.println("<input type=\"text\" class=\"number  form-control "+ required +" autocomplete\"  size=\""+indexDefinition.getIndexMaxLength()+"\"  id=\""+indexDefinition.getIndexColumnName()+"\" name=\""+indexDefinition.getIndexColumnName()+"\" value=\""+value+"\" maxlength=\""+indexDefinition.getIndexMaxLength()+"\"   cid=\""+selectedDocumentClass.getClassId()+"\">");
+							out.println("<span class=\"input-group-text\"><i class=\"bi bi-hash\"></i></span>");
+							out.println("</div>");
 							out.println("</div>");
 						}else {
 							out.println("<div class=\"col-sm-9\">");
+							out.println("<div class=\"input-group\">");
 							out.println("<input type=\"text\"  class=\"autocomplete form-control "+ required +" \" size=\""+size+"\" id=\""+indexDefinition.getIndexColumnName()+"\"  name=\""+indexDefinition.getIndexColumnName()+"\" value=\""+value+"\"maxlength=\""+indexDefinition.getIndexMaxLength()+"\"  cid=\""+selectedDocumentClass.getClassId()+"\">");
+							out.println("<span class=\"input-group-text\"><i class=\"bi bi-type\"></i></span>");
+							out.println("</div>");
 							out.println("</div>");
 						}
 						out.println("</div>");
@@ -156,7 +162,7 @@ public class NewDocumentView extends WebView {
 					out.println("<hr/>");
 					out.println("<div class=\"mb-3 row\">");
 					out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
-					out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-primary\">");
+					out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 					out.println("</div>");
 					out.println("</div>");
 				}
