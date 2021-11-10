@@ -161,7 +161,7 @@ public class SearchDocumentClassView extends WebView {
 			
 			out.println("<hr/>");
 			out.println("<div class=\"mb-3 row\">");
-			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+			out.println("<div class=\"offset-sm-3 col-sm-9\">");
 			out.println("<input type=\"hidden\"  name=\"classid\"  value=\""+ documentClass.getClassId() + "\"/>");
 			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Show Hits\" class=\"btn btn-sm btn-dark\">");
 			out.println("</div>");
@@ -270,7 +270,7 @@ public class SearchDocumentClassView extends WebView {
 		out.println("</div>");
 
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+		out.println("<div class=\"offset-sm-3 col-sm-9\">");
 		out.println("<div class=\"checkbox\"><label>");
 		out.println("<input type=\"checkBox\" value=\"Y\" name=\"chkAll\">&nbsp; Search All Revisions");
 		out.println("</label>");

@@ -63,7 +63,7 @@ public class Error404View extends WebView {
 		
 	private void printError404() throws Exception{
 		out.println("<div class=\"row\">");
-		out.println("<div class=\"col-sm-8 col-sm-offset-2\">");
+		out.println("<div class=\"col-sm-8 offset-sm-2\">");
 		out.println("<div class=\"card   \">");
 		out.println("<div class=\"card-body\">");
 		out.println("<h1 class=\"text-success\">Page not found</h1>");

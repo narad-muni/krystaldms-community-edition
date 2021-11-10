@@ -42,7 +42,6 @@ import com.primeleaf.krystal.web.action.console.CheckInDocumentAction;
 import com.primeleaf.krystal.web.action.console.CheckoutDocumentAction;
 import com.primeleaf.krystal.web.action.console.DeleteBookmarkAction;
 import com.primeleaf.krystal.web.action.console.DeleteDocumentAction;
-import com.primeleaf.krystal.web.action.console.DocumentClassPropertiesAction;
 import com.primeleaf.krystal.web.action.console.DocumentNotesAction;
 import com.primeleaf.krystal.web.action.console.DocumentViewerAction;
 import com.primeleaf.krystal.web.action.console.DownloadDocumentAction;
@@ -113,8 +112,6 @@ public class ActionFactory {
 			actions.put("/console/changepassword", new ChangePasswordAction());
 			actions.put("/console/myprofile", new MyProfileAction());
 			actions.put("/console/preferences", new PreferencesAction());
-			
-			actions.put("/console/documentclassproperties", new DocumentClassPropertiesAction());//Added by Rahul Kubadia on 30-Nov-2014 at home
 			
 			actions.put("/console/search", new SearchAction());
 			actions.put("/console/newdocument", new NewDocumentAction());

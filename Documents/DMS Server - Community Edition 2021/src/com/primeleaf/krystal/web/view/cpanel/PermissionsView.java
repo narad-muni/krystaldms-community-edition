@@ -132,7 +132,7 @@ public class PermissionsView extends WebView {
 		
 		out.println("<hr/>");
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<div class=\"col-sm-offset-2 col0\">");
+		out.println("<div class=\"offset-sm-2 col0\">");
 		out.println("<input type=\"hidden\" name=\"classid\" value=\""+documentClass.getClassId()+"\"/>");
 		out.println("<input type=\"submit\" name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 		out.println("</div>");

@@ -73,7 +73,7 @@ public class DocumentClassAccessHistoryReportView extends WebView {
 
 			out.println("<form action=\"/cpanel/documentclassaccesshistory\" autocomplete=\"off\" method=\"post\" id=\"frmReport\" class=\"form-horizontal\" accept-charset=\"utf-8\">");
 			out.println("<div class=\"mb-3 row\">");
-			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+			out.println("<div class=\"offset-sm-3 col-sm-9\">");
 			out.println("<p>Fields marked with <span style='color:red'>*</span> are mandatory</p>");
 			out.println("</div>");
 			out.println("</div>");
@@ -123,7 +123,7 @@ public class DocumentClassAccessHistoryReportView extends WebView {
 
 			out.println("<hr/>");
 			out.println("<div class=\"mb-3 row\">");
-			out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+			out.println("<div class=\"offset-sm-3 col-sm-9\">");
 			out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 			out.println("</div>");
 			out.println("</div>");

@@ -108,7 +108,7 @@ public class HomeView extends WebView {
 					out.print("<li class=\"list-inline-item\"><a href=\"/console/opendocumentclass?classid="+documentClass.getClassId()+"\" title=\"View All\"><i class=\"bi bi-eye me-1\"></i>View All ("+documentCount+")</a></li></ul>");
 					out.print("</div>");
 					out.print("<div class=\"col-lg-3 d-none d-sm-block text-end\">");
-					out.print("<a href=\"/console/opendocumentclass?classid=2\" title=\"\" class=\"tip\" data-toggle=\"tooltip\" data-placement=\"left\" data-bs-original-title=\"Available Documents\">");
+					out.print("<a href=\"/console/opendocumentclass?classid="+documentClass.getClassId()+"\" title=\"\" class=\"tip\" data-toggle=\"tooltip\" data-placement=\"left\" data-bs-original-title=\"Available Documents\">");
 					out.print("<span class=\"display-4 totaldocs"+documentClass.getClassId()+" odometer odometer-auto-theme\">0</span>");
 					out.print("</a>");
 					if(documentCount > 0 ){
@@ -117,35 +117,6 @@ public class HomeView extends WebView {
 					out.print("</div>");
 					out.print("</div>");
 					out.print("</li>");
-
-					
-//					out.println("<li class=\"list-group-item\">");
-//					out.println("<div class=\"row\">");
-//					out.println("<div class=\"col-xs-12 col-sm-10\">");
-//					out.println("<a href=\"/console/opendocumentclass?classid="+documentClass.getClassId()+"\" class=\"\">");
-//					out.println("<h3>"+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"</h3>");
-//					out.println("</a>");
-//					out.println("<p><h6>");
-//					out.println("<a href=\"/console/opendocumentclass?classid="+ documentClass.getClassId()+"\">View All ("+documentCount+") </a> | ");
-//					out.println("<a href=\"/console/searchdocumentclass?classid="+ documentClass.getClassId()+"\">Search</a>");
-//					if(acl.canCreate()){
-//						out.println(" | <a href=\"/console/newdocument?classid="+ documentClass.getClassId()+"\">Add Document</a>");
-//					}
-//					out.println("</h6></p>");
-//					out.println("</div>");
-//
-//					out.println("<div class=\"col-xs-12 col-sm-2 text-end\">");
-//					out.println("<a href=\"/console/opendocumentclass?classid="+ documentClass.getClassId()+"\" title=\"Total Documents\">");
-//					out.println("<h3 class=\"odometer totaldocs"+documentClass.getClassId()+"\">0</h3>");
-//					if(documentCount > 0 ){
-//						out.println("<script>setTimeout(function(){$('.totaldocs"+documentClass.getClassId()+"').html('"+documentCount+"');},1000);</script>");
-//					}
-//					out.println("<p><h6>Total Documents</h6></p>");
-//					out.println("</a>");
-//					out.println("</div>");
-//
-//					out.println("</div>");
-//					out.println("</li>");
 				}
 				out.println("</ul>");
 			}else{
@@ -234,25 +205,50 @@ public class HomeView extends WebView {
 		try{
 			ArrayList<DocumentClass> documentClasses = 	(ArrayList<DocumentClass>) request.getAttribute("DOCUMENTCLASSLIST");
 			if(documentClasses.size() >  0 ){
-				out.println("<div class=\"card   \">");
+				out.println("<div class=\"card\">");
 				out.println("<div class=\"card-header\">");
 				out.println("<i class=\"bi text-primary bi-pie-chart\"></i> Charts");
 				out.println("</div>");
 				out.println("<div class=\"card-body text-center\">");
-				out.println("<div id=\"homechart\" style=\"height:220px;\">");
+				out.println("<canvas id=\"classChart\" height=\"200\"></canvas>");
 				out.println("<script>");
-				out.println("new Morris.Donut({");
-				out.println("  element: 'homechart',");
-				out.println("  data: [");
-
+				
+				out.println("const ctx = document.getElementById(\'classChart\').getContext(\'2d\');");
+				out.println("var dataLabels = []");
+				
 				for(DocumentClass documentClass : documentClasses){
-					int documentCount = documentClass.getActiveDocuments();
-					out.println("    { label: \""+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"\", value: "+documentCount+" },");
+					out.println("dataLabels.push(\""+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"\");");
 				}
-				out.println("  ],");
+				
+				out.println("var dataValues = []");
+				
+				for(DocumentClass documentClass : documentClasses){
+					out.println("dataValues.push("+documentClass.getActiveDocuments()+");");
+				}
+				out.println("const myChart = new Chart(ctx, {");
+				out.println("    type: \'pie\',");
+				out.println("    data: {");
+				out.println("        labels:dataLabels,");
+				out.println("        datasets: [{");
+				out.println("            data: dataValues,");
+				out.println("            backgroundColor: [");
+				out.println("                \'#0B62A4\', \'#3980B5\', \'#679DC6\', \'#95BBD7\', \'#B0CCE1\', \'#095791\', \'#095085\', \'#083E67\', \'#052C48\', \'#042135\'");
+				out.println("            ],");
+				out.println("            borderColor: [");
+				out.println("               \'#fff\'");
+				out.println("            ],");
+				out.println("            borderWidth: 1");
+				out.println("        }]");
+				out.println("    },");
+				out.println("    options: {");
+				out.println("        legend: {");
+				out.println("         display: false //This will do the task");
+				out.println("      },"
+						+ "aspectRatio:2");
+				out.println("    }");
 				out.println("});");
+				
 				out.println("</script>");
-				out.println("</div>");
 				out.println("</div>");
 				out.println("</div>");
 			}

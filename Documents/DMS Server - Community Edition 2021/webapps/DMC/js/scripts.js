@@ -14,6 +14,9 @@
   return "";
 }
 
+lineBackgroundColors = ['#0B62A4', '#3980B5', '#679DC6', '#95BBD7', '#B0CCE1', '#095791', '#095085', '#083E67', '#052C48', '#042135']
+lineBorderColors = ['#0B62A4', '#3980B5', '#679DC6', '#95BBD7', '#B0CCE1', '#095791', '#095085', '#083E67', '#052C48', '#042135']
+
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -86,7 +89,7 @@ $.validator.setDefaults({
     },
     submitHandler: function(form) { 
     	if(form.id == "frmLogin"){
-			 $("#btnLogin").button('loading');
+			 $("#btnLogin").text('Please Wait...');
 		}
     	var formtype = $(form).attr("form-type");
     	if("ajax" == formtype){

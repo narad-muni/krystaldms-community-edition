@@ -75,7 +75,7 @@ public class CheckInDocumentView extends WebView {
 
 				out.println("<form action=\"/console/checkindocument\" method=\"post\" id=\"frmCheckInDocument\" class=\"form-horizontal\" enctype=\"multipart/form-data\" accept-charset=\"utf-8\">");
 				out.println("<div class=\"mb-3 row\">");
-				out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+				out.println("<div class=\"offset-sm-3 col-sm-9\">");
 				out.println("<p>Fields marked with <span style='color:red'>*</span> are mandatory</p>");
 				out.println("</div>");
 				out.println("</div>");
@@ -154,7 +154,7 @@ public class CheckInDocumentView extends WebView {
 				out.println("</div>");
 				out.println("<hr/>");
 				out.println("<div class=\"mb-3 row\">");
-				out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+				out.println("<div class=\"offset-sm-3 col-sm-9\">");
 				out.println("<input type=\"hidden\" name=\"documentid\" value=\""+document.getDocumentId()+"\">");
 				out.println("<input type=\"hidden\" name=\"fileExtension\" id=\"fileExtension\" value=\""+document.getExtension().toUpperCase()+"\">");
 				out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Check In\" class=\"btn btn-sm btn-dark\">");

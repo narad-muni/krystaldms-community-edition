@@ -134,19 +134,57 @@ public class SummaryReportView extends WebView {
 				out.println("<div class=\"row\">");
 				out.println("<div class=\"col-sm-6 text-center\">");
 				out.println("<h3>Documents : "  + request.getAttribute("DOCUMENTS") +"</h3>");
-				out.println("<div id=\"classchart\" style=\"height:280px;\">");
+				out.println("<canvas id=\"classchart\" height=\"100\"></canvas>");
+				out.println("<div>");
 				out.println("<script>");
-				out.println("new Morris.Donut({");
-				out.println("  element: 'classchart',");
-				out.println("  data: [");
-
-
+				
+//				out.println("new Morris.Donut({");
+//				out.println("  element: 'classchart',");
+//				out.println("  data: [");
+//
+//
+//				for(DocumentClass documentClass : documentClasses){
+//					int documentCount = documentClass.getActiveDocuments();
+//					out.println("    { label: \""+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"\", value: "+documentCount+" },");
+//				}
+//				out.println("  ],");
+//				out.println("});");
+				
+				out.println("const ctx = document.getElementById(\'classchart\').getContext(\'2d\');");
+				out.println("var dataLabels = []");
+				
 				for(DocumentClass documentClass : documentClasses){
-					int documentCount = documentClass.getActiveDocuments();
-					out.println("    { label: \""+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"\", value: "+documentCount+" },");
+					out.println("dataLabels.push(\""+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"\");");
 				}
-				out.println("  ],");
+				
+				out.println("var dataValues = []");
+				
+				for(DocumentClass documentClass : documentClasses){
+					out.println("dataValues.push("+documentClass.getActiveDocuments()+");");
+				}
+				out.println("const myChart = new Chart(ctx, {");
+				out.println("    type: \'pie\',");
+				out.println("    data: {");
+				out.println("        labels:dataLabels,");
+				out.println("        datasets: [{");
+				out.println("            data: dataValues,");
+				out.println("            backgroundColor: [");
+				out.println("                \'#0B62A4\', \'#3980B5\', \'#679DC6\', \'#95BBD7\', \'#B0CCE1\', \'#095791\', \'#095085\', \'#083E67\', \'#052C48\', \'#042135\'");
+				out.println("            ],");
+				out.println("            borderColor: [");
+				out.println("               \'#fff\'");
+				out.println("            ],");
+				out.println("            borderWidth: 1");
+				out.println("        }]");
+				out.println("    },");
+				out.println("    options: {");
+				out.println("        legend: {");
+				out.println("         display: false //This will do the task");
+				out.println("      },"
+						+ "aspectRatio:2.5");
+				out.println("    }");
 				out.println("});");
+				
 				out.println("</script>");
 				out.println("</div>");
 				out.println("</div>");//col-sm-6
@@ -155,24 +193,76 @@ public class SummaryReportView extends WebView {
 				double totalSize = (Double)request.getAttribute("TOTALSIZE");
 				out.println("<div class=\"col-sm-6 text-center\">");
 				out.println("<h3>Total Size : " + StringHelper.formatSizeText(totalSize)+ "</h3>");
-				out.println("<div id=\"sizechart\" style=\"height:280px;\">");
+				out.println("<canvas id=\"sizechart\" height=\"100\"></canvas>");
+				out.println("<div>");
 				out.println("<script>");
-				out.println("new Morris.Donut({");
-				out.println("  element: 'sizechart',");
-				out.println("  data: [");
-
+				
+//				out.println("new Morris.Donut({");
+//				out.println("  element: 'sizechart',");
+//				out.println("  data: [");
+//
+//				for(DocumentClass documentClass : documentClasses){
+//					double documentSize = (Double) request.getAttribute(documentClass.getClassName()+"_SIZE");
+//					out.println("{ label: \""+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"\", value: "+documentSize+" },");
+//				}
+//				out.println("  ], "
+//						+ " formatter : function (y, data) { "
+//						+ " var result = '';"
+//						+ " if(y > 1024) { result = parseFloat(y/1024).toFixed(1)+ ' KB'} "
+//						+ " if(y > 1048576) { result = parseFloat(y/1048576).toFixed(1)+' MB'} "
+//						+ " if(y > 1073741824) { result = parseFloat(y/1073741824).toFixed(1)+' GB'} "
+//						+ "return result } ");
+//				out.println("});");
+				
+				out.println("const ctx1 = document.getElementById(\'sizechart\').getContext(\'2d\');");
+				out.println("var dataLabels1 = []");
+				
 				for(DocumentClass documentClass : documentClasses){
-					double documentSize = (Double) request.getAttribute(documentClass.getClassName()+"_SIZE");
-					out.println("{ label: \""+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"\", value: "+documentSize+" },");
+					out.println("dataLabels1.push(\""+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"\");");
 				}
-				out.println("  ], "
-						+ " formatter : function (y, data) { "
-						+ " var result = '';"
-						+ " if(y > 1024) { result = parseFloat(y/1024).toFixed(1)+ ' KB'} "
-						+ " if(y > 1048576) { result = parseFloat(y/1048576).toFixed(1)+' MB'} "
-						+ " if(y > 1073741824) { result = parseFloat(y/1073741824).toFixed(1)+' GB'} "
-						+ "return result } ");
+				
+				out.println("var dataValues1 = []");
+				
+				for(DocumentClass documentClass : documentClasses){
+					out.println("dataValues1.push("+(Double) request.getAttribute(documentClass.getClassName()+"_SIZE")+");");
+				}
+				out.println("const myChart1 = new Chart(ctx1, {");
+				out.println("    type: \'pie\',");
+				out.println("    data: {");
+				out.println("        labels:dataLabels1,");
+				out.println("        datasets: [{");
+				out.println("            data: dataValues1,");
+				out.println("            backgroundColor: [");
+				out.println("                \'#0B62A4\', \'#3980B5\', \'#679DC6\', \'#95BBD7\', \'#B0CCE1\', \'#095791\', \'#095085\', \'#083E67\', \'#052C48\', \'#042135\'");
+				out.println("            ],");
+				out.println("            borderColor: [");
+				out.println("               \'#fff\'");
+				out.println("            ],");
+				out.println("            borderWidth: 1");
+				out.println("        }]");
+				out.println("    },");
+				out.println("    options: {");
+				out.println("        legend: {");
+				out.println("         display: false //This will do the task");
+				out.println("      },");
+				out.println("tooltips: {");
+				out.println("callbacks: {");
+				out.println("	label: function(tooltipItem, value) {"
+						+ "			var allData = value.datasets[tooltipItem.datasetIndex].data; "
+						+"			var tooltipLabel = value.labels[tooltipItem.index];"
+						+ "			var size = allData[tooltipItem.index];"		
+						+ " 		var result = size + ' bytes';"
+						+ " 		if(size > 1024) { result = parseFloat(size/1024).toFixed(1)+ ' KB'} "
+						+ " 		if(size > 1048576) { result = parseFloat(size/1048576).toFixed(1)+' MB'} "
+						+ " 		if(size > 1073741824) { result = parseFloat(size/1073741824).toFixed(1)+' GB'} "
+						+ " 		return  tooltipLabel + ' : '   + result; "
+						+ "		},");
+				out.println("}");
+				out.println("},");
+				out.println("aspectRatio:2.5");
+				out.println("    }");
 				out.println("});");
+				
 				out.println("</script>");
 				out.println("</div>");
 				out.println("</div>");//col-sm-6
@@ -180,35 +270,126 @@ public class SummaryReportView extends WebView {
 
 				if(documentClasses.size() > 0){
 					out.println("<div class=\"text-center\">");
-					out.println("<div id=\"linechart\" style=\"height:280px;\">");
-					out.println("<script>");
-					out.println("new Morris.Line({");
-					out.println("  element: 'linechart',");
-					out.println("  data: [");
+					out.println("<div>");
+					
+//					out.println("new Morris.Line({");
+//					out.println("  element: 'linechart',");
+//					out.println("  data: [");
 					LinkedHashMap<String,Integer> chartValues =(LinkedHashMap<String,Integer>) request.getAttribute(documentClasses.get(0).getClassName() + "_CHARTVALUES");
-
+//
+//					for(String month : chartValues.keySet()){
+//						out.print("{y : '" + month + "'");
+//						for(DocumentClass documentClass : documentClasses){
+//							chartValues = (LinkedHashMap<String,Integer>) request.getAttribute(documentClass.getClassName() + "_CHARTVALUES");
+//							out.print(", c"+documentClass.getClassId() + " : "+ chartValues.get(month));
+//						}
+//						out.println("},");
+//					}
+//					out.println("  ],");
+//					out.println("   xkey: 'y',");
+//					out.print(" ykeys: [");
+//					for(DocumentClass documentClass : documentClasses){
+//						out.print("'c"+documentClass.getClassId()+"',");
+//					}
+//					out.println("],");
+//					out.println(" labels: [");
+//					for(DocumentClass documentClass : documentClasses){
+//						out.print("'"+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"',");
+//					}
+//					out.println("]");
+//					out.println("});");
+					
+//					out.println("const ctx2 = document.getElementById(\'linechart\').getContext(\'2d\');");
+//					out.println("var dataLabels2 = []");
+//					
+//					for(DocumentClass documentClass : documentClasses){
+//						out.println("dataLabels2.push(\""+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"\");");
+//					}
+//					
+//					out.println("var dataValues2 = []");
+//					
+//					for(DocumentClass documentClass : documentClasses){
+//						out.println("dataValues2.push("+documentClass.getActiveDocuments()+");");
+//					}
+//					out.println("const myChart2 = new Chart(ctx2, {");
+//					out.println("    type: \'line\',");
+//					out.println("    data: {");
+//					out.println("        labels:dataLabels2,");
+//					out.println("        datasets: [{");
+//					out.println("            data:dataValues2,");
+//					out.println("            backgroundColor: [");
+//					out.println("                \'#0B62A4\', \'#3980B5\', \'#679DC6\', \'#95BBD7\', \'#B0CCE1\', \'#095791\', \'#095085\', \'#083E67\', \'#052C48\', \'#042135\'");
+//					out.println("            ],");
+//					out.println("            borderColor: [");
+//					out.println("               \'#fff\'");
+//					out.println("            ],");
+//					out.println("            borderWidth: 1,"
+//							+ "tension: 0.1");
+//					out.println("        }]");
+//					out.println("    },");
+//					out.println("    options: {"
+//							+ "legend:{"
+//							+ "display:false"
+//							+ "},");
+//					out.println("      scales: {\r\n"
+//							+ "        yAxes: [{\r\n"
+//							+ "            ticks: {\r\n"
+//							+ "                beginAtZero: true\r\n"
+//							+ "            }\r\n"
+//							+ "        }]\r\n"
+//							+ "    }");
+//					out.println("    }");
+//					out.println("});");
+					
+					out.println("<canvas id=\"uploadchart\" height=\"300\"></canvas>");
+					out.println("<script>");
+					out.println("var ctx4 = document.getElementById(\"uploadchart\");");
+					out.println("var myChart3 = new Chart(ctx4, {");
+					out.println("type: 'line',");
+					out.println("data: {");
+					out.println("labels: [");
 					for(String month : chartValues.keySet()){
-						out.print("{y : '" + month + "'");
-						for(DocumentClass documentClass : documentClasses){
-							chartValues = (LinkedHashMap<String,Integer>) request.getAttribute(documentClass.getClassName() + "_CHARTVALUES");
-							out.print(", c"+documentClass.getClassId() + " : "+ chartValues.get(month));
-						}
-						out.println("},");
-					}
-					out.println("  ],");
-					out.println("   xkey: 'y',");
-					out.print(" ykeys: [");
-					for(DocumentClass documentClass : documentClasses){
-						out.print("'c"+documentClass.getClassId()+"',");
+						out.print("'"+month+"',");
 					}
 					out.println("],");
-					out.println(" labels: [");
+					out.println("datasets: [");
+					int i = 0;
 					for(DocumentClass documentClass : documentClasses){
-						out.print("'"+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"',");
+						chartValues = (LinkedHashMap<String,Integer>) request.getAttribute(documentClass.getClassName() + "_CHARTVALUES");
+						out.println("{label: '"+StringEscapeUtils.escapeHtml4(documentClass.getClassName())+"',");
+						out.println("data: [");
+						for(String key : chartValues.keySet()){
+							int value = chartValues.get(key)!=null?chartValues.get(key):0;
+							out.print(value + ",");
+						}
+						out.println("],"
+								+ "fill:false,");
+						out.println("backgroundColor : lineBackgroundColors["+i  % 10 +"],");
+						out.println("borderColor :lineBorderColors["+i % 10 +"],");
+						out.println("borderWidth: 1");
+						out.println("},");
+						i++;
 					}
 					out.println("]");
+					out.println("},");
+					out.println("options: {");
+					out.println("legend: {");
+					out.println("display: false,");
+					out.println("},");
+					out.println("responsive:true,");
+					out.println("maintainAspectRatio: false,"
+							+ "tooltips: {\r\n"
+							+ "      mode: 'index',\r\n"
+							+ "      intersect: false\r\n"
+							+ "   },\r\n"
+							+ "   hover: {\r\n"
+							+ "      mode: 'index',\r\n"
+							+ "      intersect: false\r\n"
+							+ "   }");
+					out.println("}");
 					out.println("});");
 					out.println("</script>");
+					
 					out.println("</div>");//line-chart
 					out.println("</div>");//
 				}
@@ -274,4 +455,3 @@ public class SummaryReportView extends WebView {
 		}
 	}
 }
-

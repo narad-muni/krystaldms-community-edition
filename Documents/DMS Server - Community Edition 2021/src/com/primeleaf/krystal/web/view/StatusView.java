@@ -5,14 +5,8 @@ package com.primeleaf.krystal.web.view;
  *
  */
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.primeleaf.krystal.model.ConnectionPoolManager;
 
 public class StatusView extends WebView {
 	

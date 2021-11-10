@@ -60,18 +60,27 @@ public class NewDocumentView extends WebView {
 		if(request.getAttribute(HTTPConstants.REQUEST_MESSAGE) != null){
 			printSuccess((String)request.getAttribute(HTTPConstants.REQUEST_MESSAGE));
 		}
-		out.println("<div class=\"card   \">");
+		out.println("<div class=\"card\">");
 		out.println("<div class=\"card-header\"><i class=\"bi text-primary me-2 bi-cloud-upload\"></i> Add Document</div>");
 		out.println("<div class=\"card-body\">");
 		
 		try {
 			ArrayList <DocumentClass> documentClasses = (ArrayList <DocumentClass>) request.getAttribute("CLASSLIST");
-			int classId  =(Integer) request.getAttribute("CLASSID");
-
+			int classId = 0;
+			try {
+				classId  = (Integer) request.getAttribute("CLASSID");
+				if(classId<1) {
+					response.sendRedirect("/");
+					return ;
+				}
+			}catch (Exception e) {
+				response.sendRedirect("/");
+				return ;
+			}
 			if(documentClasses.size() > 0){
 				out.println("<form autocomplete=\"off\" action=\"/console/newdocument\" method=\"post\" id=\"frmNewDocument\" class=\"form-horizontal\" enctype=\"multipart/form-data\" target=\"uploadFrame\" accept-charset=\"utf-8\">");
 				out.println("<div class=\"mb-3 row\">");
-				out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+				out.println("<div class=\"offset-sm-3 col-sm-9\">");
 				out.println("<p>Fields marked with <span style='color:red'>*</span> are mandatory</p>");
 				out.println("</div>");
 				out.println("</div>");
@@ -80,7 +89,6 @@ public class NewDocumentView extends WebView {
 				out.println("<label for=\"classid\" class=\"col-sm-3 col-form-label\">Select Document Class <span style='color:red'>*</span></label>");
 				out.println("<div class=\"col-sm-9\">");
 				out.println("<select id=\"classid\" name=\"classid\" class=\"form-control form-select required autosubmit\"\">");
-				out.println("<option value=\"0\">Select Document Class</option>");
 				String selected = "";
 				for(DocumentClass documentClass : documentClasses){
 					selected = "";
@@ -149,7 +157,7 @@ public class NewDocumentView extends WebView {
 					out.println("</div>");
 
 					out.println("<div class=\"mb-3 row\" id=\"pbContainer\" style=\"display:none;\">");
-					out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+					out.println("<div class=\"offset-sm-3 col-sm-9\">");
 					out.println("<div class=\"progress progress-striped active\" id=\"progressbarMain\">");
 					out.println("<div class=\"progress-bar progress-bar-success\" id=\"progressbar\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%\">");
 					out.println("<span class=\"sr-only\">0% Complete</span>");
@@ -161,7 +169,7 @@ public class NewDocumentView extends WebView {
 
 					out.println("<hr/>");
 					out.println("<div class=\"mb-3 row\">");
-					out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+					out.println("<div class=\"offset-sm-3 col-sm-9\">");
 					out.println("<input type=\"submit\"  name=\"btnSubmit\"  value=\"Submit\" class=\"btn btn-sm btn-dark\">");
 					out.println("</div>");
 					out.println("</div>");

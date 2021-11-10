@@ -86,7 +86,7 @@ public class ChangeUserPasswordView extends WebView {
 
 		out.println("<hr/>");
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+		out.println("<div class=\"offset-sm-3 col-sm-9\">");
 		out.println("<input type=\"hidden\"  value=\""+user.getUserId()+"\" name=\"userid\"/>");
 		out.println("<input class=\"btn btn-sm btn-dark\" type=\"submit\"  value=\"Submit\" name=\"btnSubmit\"/>&nbsp;");
 		out.println("</div>");

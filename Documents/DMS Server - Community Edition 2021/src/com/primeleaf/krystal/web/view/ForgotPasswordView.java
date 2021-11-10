@@ -8,8 +8,6 @@ package com.primeleaf.krystal.web.view;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.primeleaf.krystal.util.ConfigParser;
-
 public class ForgotPasswordView extends WebView{
 
 	public ForgotPasswordView(HttpServletRequest request, HttpServletResponse response) throws Exception{

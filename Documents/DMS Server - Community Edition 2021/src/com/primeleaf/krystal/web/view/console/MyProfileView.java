@@ -132,7 +132,7 @@ public class MyProfileView extends WebView {
 		out.println("<div class=\"card-header\"><h4>Hitlist Preferences</h4></div>");
 		out.println("<div class=\"card-body\">");
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<label for=\"cmbHitListSize\" class=\"col-sm-3 col-form-label\">No of Hits per page</label>");
+		out.println("<label for=\"cmbHitListSize\" class=\"col-sm-3 col-form-label ps-5\">No of Hits per page</label>");
 		out.println("<div class=\"col-sm-9\">");
 		out.println("<select class=\"form-control\" name=\"cmbHitListSize\">");
 		out.println("<option value=\"5\""); 	if(loggedInUser.getHitlistSize() == 5 ){ out.print(" selected");} out.println(">5</option>");
@@ -145,51 +145,51 @@ public class MyProfileView extends WebView {
 		out.println("</div>");
 
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<label for=\"radCreatedOn\" class=\"col-sm-3 col-xs-2 col-form-label\">Created On</label>");
-		out.println("<div class=\"btn-group col me-5\">");
-		out.println("<input class=\"btn-check\" type=\"radio\" id=\"radCreatedOn1\" name=\""+HitList.META_CREATED+"\"  value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isCreatedVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"radCreatedOn1\" class=\"btn btn-outline-dark\">Yes</label>");
-		out.println("<input class=\"btn-check\" type=\"radio\" id=\"radCreatedOn2\" name=\""+HitList.META_CREATED+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isCreatedVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"radCreatedOn2\" class=\"btn btn-outline-dark\">No</label>");
+//		out.println("<label for=\"radCreatedOn\" class=\"col-sm-3 col-xs-2 col-form-label\">Created On</label>");
+		out.println("<div class=\" btn-group col me-5 form-check form-switch\">");
+		out.println("<input class=\"form-check-input mx-3\" type=\"checkbox\" id=\"radCreatedOn1\" name=\""+HitList.META_CREATED+"\"  value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isCreatedVisible()) {out.print(" checked");}out.print(">");
+		out.println("<label for=\"radCreatedOn1\" class=\"form-check-label\">Created On</label>");
+//		out.println("<input class=\"btn-check\" type=\"radio\" id=\"radCreatedOn2\" name=\""+HitList.META_CREATED+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isCreatedVisible()) {out.print(" checked");}out.print(">");
+//		out.println("<label for=\"radCreatedOn2\" class=\"btn btn-outline-dark\">No</label>");
 				
 		out.println("</div>");
 
-		out.println("<label for=\"radActive\" class=\"col-sm-3 col-xs-2 col-form-label\">Created By</label>");
-		out.println("<div class=\"btn-group col me-5\" data-bs-toggle=\"buttons\">");
-		out.println("<input class=\"btn-check\" type=\"radio\" id=\"radActive1\" name=\""+HitList.META_CREATEDBY+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isCreatedByVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"radActive1\" class=\"btn btn-outline-dark \">Yes</label>");
-		out.println("<input class=\"btn-check\" type=\"radio\" id=\"radActive2\" name=\""+HitList.META_CREATEDBY+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isCreatedByVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"radActive2\" class=\"btn btn-outline-dark \">No</label>");
+//		out.println("<label for=\"radActive\" class=\"col-sm-3 col-xs-2 col-form-label\">Created By</label>");
+		out.println("<div class=\" btn-group col me-5 form-check form-switch\" data-bs-toggle=\"buttons\">");
+		out.println("<input class=\"form-check-input mx-3\" type=\"checkbox\" id=\"radActive1\" name=\""+HitList.META_CREATEDBY+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isCreatedByVisible()) {out.print(" checked");}out.print(">");
+		out.println("<label for=\"radActive1\" class=\"form-check-label \">Created By</label>");
+//		out.println("<input class=\"btn-check\" type=\"radio\" id=\"radActive2\" name=\""+HitList.META_CREATEDBY+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isCreatedByVisible()) {out.print(" checked");}out.print(">");
+//		out.println("<label for=\"radActive2\" class=\"btn btn-outline-dark \">No</label>");
 		out.println("</div>");
 		
 		out.println("</div>");
 
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<label for=\"modifiedOn\" class=\"col-sm-3 col-xs-2 col-form-label\">Last Modified On</label>");
-		out.println("<div class=\"btn-group col me-5\" data-bs-toggle=\"buttons\">");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"modifiedOn1\" name=\""+HitList.META_MODIFIED+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isModifiedVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"modifiedOn1\" class=\"btn btn-outline-dark \">Yes</label>");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"modifiedOn2\" name=\""+HitList.META_MODIFIED+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isModifiedVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"modifiedOn2\" class=\"btn btn-outline-dark \">No</label>");
+//		out.println("<label for=\"modifiedOn\" class=\"col-sm-3 col-xs-2 col-form-label\">Last Modified On</label>");
+		out.println("<div class=\" btn-group col me-5 form-check form-switch\" data-bs-toggle=\"buttons\">");
+		out.println("<input class=\"form-check-input mx-3\"  type=\"checkbox\" id=\"modifiedOn1\" name=\""+HitList.META_MODIFIED+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isModifiedVisible()) {out.print(" checked");}out.print(">");
+		out.println("<label for=\"modifiedOn1\" class=\"form-check-label \">Last Modified On</label>");
+//		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"modifiedOn2\" name=\""+HitList.META_MODIFIED+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isModifiedVisible()) {out.print(" checked");}out.print(">");
+//		out.println("<label for=\"modifiedOn2\" class=\"btn btn-outline-dark \">No</label>");
 		out.println("</div>");
 
-		out.println("<label for=\"modifiedBy\" class=\"col-sm-3 col-xs-2 col-form-label\">Last Modified By</label>");
-		out.println("<div class=\"btn-group col me-5\" data-bs-toggle=\"buttons\">");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"modifiedBy1\" name=\""+HitList.META_MODIFIEDBY+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isModifiedByVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"modifiedBy1\" class=\"btn btn-outline-dark \">Yes</label>");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"modifiedBy2\" name=\""+HitList.META_MODIFIEDBY+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isModifiedByVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"modifiedBy2\" class=\"btn btn-outline-dark \">No</label>");
+//		out.println("<label for=\"modifiedBy\" class=\"col-sm-3 col-xs-2 col-form-label\">Last Modified By</label>");
+		out.println("<div class=\" btn-group col me-5 form-check form-switch\" data-bs-toggle=\"buttons\">");
+		out.println("<input class=\"form-check-input mx-3\"  type=\"checkbox\" id=\"modifiedBy1\" name=\""+HitList.META_MODIFIEDBY+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isModifiedByVisible()) {out.print(" checked");}out.print(">");
+		out.println("<label for=\"modifiedBy1\" class=\"form-check-label \">Last Modified By</label>");
+//		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"modifiedBy2\" name=\""+HitList.META_MODIFIEDBY+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isModifiedByVisible()) {out.print(" checked");}out.print(">");
+//		out.println("<label for=\"modifiedBy2\" class=\"btn btn-outline-dark \">No</label>");
 		out.println("</div>");
 		out.println("</div>");
 
 		
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<label for=\"fileSize\" class=\"col-sm-3 col-xs-2 col-form-label\">File Size</label>");
-		out.println("<div class=\"btn-group col me-5\" data-bs-toggle=\"buttons\">");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"fileSize1\" name=\""+HitList.META_LENGTH+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isFileSizeVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"fileSize1\" class=\"btn btn-outline-dark \">Yes</label>");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"fileSize2\" name=\""+HitList.META_LENGTH+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isFileSizeVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"fileSize2\" class=\"btn btn-outline-dark \">No</label>");
+//		out.println("<label for=\"fileSize\" class=\"col-sm-3 col-xs-2 col-form-label\">File Size</label>");
+		out.println("<div class=\"btn-group col me-5 form-check form-switch\" data-bs-toggle=\"buttons\">");
+		out.println("<input class=\"form-check-input mx-3\"  type=\"checkbox\" id=\"fileSize1\" name=\""+HitList.META_LENGTH+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isFileSizeVisible()) {out.print(" checked");}out.print(">");
+		out.println("<label for=\"fileSize1\" class=\"form-check-label\">File Size</label>");
+//		out.println("<input class=\"btn-check\"  type=\"checkbox\" id=\"fileSize2\" name=\""+HitList.META_LENGTH+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isFileSizeVisible()) {out.print(" checked");}out.print(">");
+//		out.println("<label for=\"fileSize2\" class=\"btn btn-outline-dark \">No</label>");
 		out.println("</div>");
 		
 		/*
@@ -197,55 +197,55 @@ public class MyProfileView extends WebView {
 		 * on 25 August 2021
 		 * */
 		
-		out.println("<label for=\"Mode\" class=\"col-sm-3 col-xs-2 col-form-label\">Dark Mode</label>");
-		out.println("<div class=\"btn-group col me-5\">");
-		out.println("<input class=\"btn-check\" type=\"radio\" id=\"darkMode\" name=\"Mode\" value=\"TRUE\">");
-		out.println("<label for=\"darkMode\" class=\"btn btn-outline-dark\">Yes</label>");
-		out.println("<input class=\"btn-check\" type=\"radio\" id=\"lightMode\" name=\"Mode\"  value=\"FALSE\">");
-		out.println("<label for=\"lightMode\" class=\"btn btn-outline-dark\">No</label>");
+//		out.println("<label for=\"Mode\" class=\"col-sm-3 col-xs-2 col-form-label\">Dark Mode</label>");
+		out.println("<div class=\"btn-group col me-5 form-check form-switch\">");
+		out.println("<input class=\"form-check-input mx-3\" type=\"checkbox\" id=\"darkMode\" name=\"Mode\" value=\"TRUE\">");
+		out.println("<label for=\"darkMode\" class=\"form-check-label\">Dark Mode</label>");
+//		out.println("<input class=\"btn-check\" type=\"radio\" id=\"lightMode\" name=\"Mode\"  value=\"FALSE\">");
+//		out.println("<label for=\"lightMode\" class=\"btn btn-outline-dark\">No</label>");
 		out.println("</div>");
 		out.println("</div>");
 
 
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<label for=\"documentId\" class=\"col-sm-3 col-xs-2 col-form-label\">Document ID</label>");
-		out.println("<div class=\"btn-group col me-5\" data-bs-toggle=\"buttons\">");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"documentId1\" name=\""+HitList.META_DOCUMENTID+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isDocumentIdVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"documentId1\" class=\"btn btn-outline-dark \">Yes</label>");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"documentId2\" name=\""+HitList.META_DOCUMENTID+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isDocumentIdVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"documentId2\" class=\"btn btn-outline-dark \">No</label>");
+//		out.println("<label for=\"documentId\" class=\"col-sm-3 col-xs-2 col-form-label\">Document ID</label>");
+		out.println("<div class=\" btn-group col me-5 form-check form-switch\" data-bs-toggle=\"buttons\">");
+		out.println("<input class=\"form-check-input mx-3\"  type=\"checkbox\" id=\"documentId1\" name=\""+HitList.META_DOCUMENTID+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isDocumentIdVisible()) {out.print(" checked");}out.print(">");
+		out.println("<label for=\"documentId1\" class=\"form-check-label \">Document ID</label>");
+//		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"documentId2\" name=\""+HitList.META_DOCUMENTID+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isDocumentIdVisible()) {out.print(" checked");}out.print(">");
+//		out.println("<label for=\"documentId2\" class=\"btn btn-outline-dark \">No</label>");
 		out.println("</div>");
 
-		out.println("<label for=\"revisionId\" class=\"col-sm-3 col-xs-2 col-form-label\">Revision ID</label>");
-		out.println("<div class=\"btn-group col me-5\" data-bs-toggle=\"buttons\">");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"revisionId1\" name=\""+HitList.META_REVISIONID+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isRevisionIdVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"revisionId1\" class=\"btn btn-outline-dark \">Yes</label>");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"revisionId2\" name=\""+HitList.META_REVISIONID+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isRevisionIdVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"revisionId2\" class=\"btn btn-outline-dark \">No</label>");
+//		out.println("<label for=\"revisionId\" class=\"col-sm-3 col-xs-2 col-form-label\">Revision ID</label>");
+		out.println("<div class=\" btn-group col me-5 form-check form-switch\" data-bs-toggle=\"buttons\">");
+		out.println("<input class=\"form-check-input mx-3\"  type=\"checkbox\" id=\"revisionId1\" name=\""+HitList.META_REVISIONID+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isRevisionIdVisible()) {out.print(" checked");}out.print(">");
+		out.println("<label for=\"revisionId1\" class=\"form-check-label \">Revision ID</label>");
+//		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"revisionId2\" name=\""+HitList.META_REVISIONID+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isRevisionIdVisible()) {out.print(" checked");}out.print(">");
+//		out.println("<label for=\"revisionId2\" class=\"btn btn-outline-dark \">No</label>");
 		out.println("</div>");
 		out.println("</div>");
 
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<label for=\"expiryOn\" class=\"col-sm-3 col-xs-2 col-form-label\">Expiry On</label>");
-		out.println("<div class=\"btn-group col me-5\" data-bs-toggle=\"buttons\">");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"expiryOn1\" name=\""+HitList.META_EXPIRYON+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isExpiryOnVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"expiryOn1\" class=\"btn btn-outline-dark \">Yes</label>");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"expiryOn2\" name=\""+HitList.META_EXPIRYON+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isExpiryOnVisible()) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"expiryOn2\" class=\"btn btn-outline-dark \">No</label>");
+//		out.println("<label for=\"expiryOn\" class=\"col-sm-3 col-xs-2 col-form-label\">Expiry On</label>");
+		out.println("<div class=\" btn-group col me-5 form-check form-switch\" data-bs-toggle=\"buttons\">");
+		out.println("<input class=\"form-check-input mx-3\"  type=\"checkbox\" id=\"expiryOn1\" name=\""+HitList.META_EXPIRYON+"\" value=\"TRUE\"");if(loggedInUser.getMetaPreferences().isExpiryOnVisible()) {out.print(" checked");}out.print(">");
+		out.println("<label for=\"expiryOn1\" class=\"form-check-label \">Expiry On</label>");
+//		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"expiryOn2\" name=\""+HitList.META_EXPIRYON+"\"  value=\"FALSE\"");if(!loggedInUser.getMetaPreferences().isExpiryOnVisible()) {out.print(" checked");}out.print(">");
+//		out.println("<label for=\"expiryOn2\" class=\"btn btn-outline-dark \">No</label>");
 		out.println("</div>");
 
-		out.println("<label for=\"radThumbNail\" class=\"col-sm-3 col-xs-2 col-form-label\">Show Thumbnail in Viewer</label>");
-		out.println("<div class=\"btn-group col me-5\" data-bs-toggle=\"buttons\">");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"radThumbNail1\" name=\"radThumbNail\" value=\"TRUE\"");if( "TRUE".equalsIgnoreCase(showThumbNail)) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"radThumbNail1\" class=\"btn btn-outline-dark \">Yes</label>");
-		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"radThumbNail2\" name=\"radThumbNail\"  value=\"FALSE\"");if("FALSE".equalsIgnoreCase(showThumbNail)) {out.print(" checked");}out.print(">");
-		out.println("<label for=\"radThumbNail2\" class=\"btn btn-outline-dark \">No</label>");
+//		out.println("<label for=\"radThumbNail\" class=\"col-sm-3 col-xs-2 col-form-label\">Show Thumbnail in Viewer</label>");
+		out.println("<div class=\" btn-group col me-5 form-check form-switch\" data-bs-toggle=\"buttons\">");
+		out.println("<input class=\"form-check-input mx-3\"  type=\"checkbox\" id=\"radThumbNail1\" name=\"radThumbNail\" value=\"TRUE\"");if( "TRUE".equalsIgnoreCase(showThumbNail)) {out.print(" checked");}out.print(">");
+		out.println("<label for=\"radThumbNail1\" class=\"form-check-label \">Show Thumbnail</label>");
+//		out.println("<input class=\"btn-check\"  type=\"radio\" id=\"radThumbNail2\" name=\"radThumbNail\"  value=\"FALSE\"");if("FALSE".equalsIgnoreCase(showThumbNail)) {out.print(" checked");}out.print(">");
+//		out.println("<label for=\"radThumbNail2\" class=\"btn btn-outline-dark \">No</label>");
 		out.println("</div>");
 		out.println("</div>");
 		
 		out.println("<hr/>");
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+		out.println("<div class=\"ps-5 col-sm-9\">");
 		out.println("<input class=\"btn btn-sm btn-dark\" type=\"submit\"  value=\"Submit\" name=\"btnSubmit\">&nbsp;");
 		out.println("</div>");
 		out.println("</div>");
@@ -289,7 +289,7 @@ public class MyProfileView extends WebView {
 
 		out.println("<hr/>");
 		out.println("<div class=\"mb-3 row\">");
-		out.println("<div class=\"col-sm-offset-3 col-sm-9\">");
+		out.println("<div class=\"offset-sm-3 col-sm-9\">");
 		out.println("<input class=\"btn btn-sm btn-dark\" type=\"submit\"  value=\"Submit\" name=\"btnSubmit\">&nbsp;");
 		out.println("</div>");
 		out.println("</div>");

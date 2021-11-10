@@ -18,9 +18,6 @@
 package com.primeleaf.krystal.web.view;
 
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +26,6 @@ import javax.servlet.http.HttpSession;
 import com.primeleaf.krystal.KRYSTALServer;
 import com.primeleaf.krystal.constants.HTTPConstants;
 import com.primeleaf.krystal.constants.ServerConstants;
-import com.primeleaf.krystal.model.ConnectionPoolManager;
 import com.primeleaf.krystal.model.vo.User;
 import com.primeleaf.krystal.util.ConfigParser;
 
@@ -88,7 +84,9 @@ public class WebPageTemplate {
 		out.println("<script src=\"/js/typeahead.min.js\"></script>");
 		out.println("<script src=\"/js/jquery.colorbox-min.js\"></script>");
 		out.println("<script src=\"/js/jquery.highlight.js\"></script>");
-		out.println("<script src=\"/js/morris.js\"></script>");
+//		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js\" integrity=\"sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>");
+		out.println("<script src=\"/js/Chart.min.js\"></script>");
+//		out.println("<script src=\"/js/morris.js\"></script>");
 		out.println("<script src=\"/js/raphael-min.js\"></script>");
 		out.println("<script src=\"/js/scripts.js\"></script>");
 		out.println("</head>");
@@ -103,12 +101,12 @@ public class WebPageTemplate {
 		if(request.getServletPath().startsWith("/login") || request.getServletPath().startsWith("/logout") || request.getServletPath().startsWith("/forgotpassword")) {
 			out.println("<div id=\"wrap\" style=\"background:url(/images/background.jpg);background-size:cover;overflow:hidden;\" >");
 		}else {
-			out.println("<div id=\"wrap\" class=\"bg-white\">");
+			out.println("<div id=\"wrap\" class=\"bg-white pb-3\">");
 		}
 		if(session.getAttribute(HTTPConstants.SESSION_KRYSTAL) == null){
 			//Added New Navbar , Saumil Shah
 			out.print("<nav class=\"navbar navbar-expand-xl navbar-dark bg-dark fixed-top\">");
-			out.print("   <a class=\"navbar-brand\" href=\"https://www.krystaldms.in/products/enterprise\" target=\"_new\"><img src=\"/images/krystal.png\" class=\"d-inline-block align-text-top mx-1 krystallogo\">KRYSTAL DMS</a><button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapsibleNavbar\" aria-controls=\"collapsibleNavbar\" aria-expanded=\"false\" aria-label=\"Toggle navigation\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\"><span class=\"navbar-toggler-icon\"></span></button>");
+			out.print("   <a class=\"navbar-brand\" href=\"https://www.krystaldms.in/products/enterprise\" target=\"_new\"><img src=\"/images/krystal.png\" class=\"d-inline-block align-text-top mx-1 krystallogo\"> KRYSTAL DMS</a><button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapsibleNavbar\" aria-controls=\"collapsibleNavbar\" aria-expanded=\"false\" aria-label=\"Toggle navigation\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\"><span class=\"navbar-toggler-icon\"></span></button>");
 			out.print("   <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\">");
 			out.print("      <ul class=\"navbar-nav	ms-auto\">");
 			out.print("         <li class=\"nav-item bg-danger\" title=\"docs\"><a href=\"javascript:void(0);\" class=\"nav-link tip fw-bold text-white\" data-bs-toggle=\"tooltip\" data-bs-placement=\"bottom\" title=\"\" data-bs-original-title=\"Total Documents\"><i class=\"bi bi-files h6 me-2\"></i><span id=\"DocCount\" class=\"odometer odometer-auto-theme\"></span></a></li>");
@@ -180,9 +178,6 @@ public class WebPageTemplate {
 			out.print("</div>");
 			out.print("</form>");
 			out.print("<ul class=\"navbar-nav ms-auto\">");
-			out.print("<li class=\"nav-item bg-primary "+cssClass+"\">");
-			out.print("<a class=\"nav-link text-white\" href=\"/console/newdocument\" title=\"Upload file\"><i class=\"bi bi-file-plus me-2 h5\"></i>Upload document</a>");
-			out.print("</li>");
 			out.print("<li class=\"nav-item bg-dark dropdown\">");
 			out.print("<a href=\"javascript:void(0);\" class=\"nav-link dropdown-toggle text-white\" data-bs-toggle=\"dropdown\" title=\"My Profile\" aria-expanded=\"false\">");
 			out.print("<i class=\"bi bi-person me-2 h5\"></i>");
@@ -238,7 +233,9 @@ public class WebPageTemplate {
 	public void generateFooter() throws Exception{
 		out.println("</div>");//continer-fluid
 		out.println("</div>");/*wrap ends here*/
-		out.print("<div class=\"bg-dark py-3 position-relative bottom-0\">");
+		out.println("</div>");//continer-fluid
+		out.println("</div>");
+		out.print("<div class=\"bg-dark py-2 position-relative\" style=\"bottom:-1rem;\">");
 		out.print("<div class=\"container-fluid\">");
 		out.print("<div class=\"row\">");
 		out.print("<div class=\"col-3 text-start text-white\">");

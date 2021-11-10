@@ -66,7 +66,7 @@ public class UnauthorizedOrInvalidAccessView extends WebView {
 	private void printUnauthorizedorInvalidAccessScreen() throws Exception{
 		String message = (String) request.getAttribute(HTTPConstants.REQUEST_ERROR);
 		out.println("<div class=\"row\">");
-		out.println("<div class=\"col-sm-8 col-sm-offset-2\">");
+		out.println("<div class=\"col-sm-8 offset-sm-2\">");
 		out.println("<div class=\"card   \">");
 		out.println("<div class=\"card-body\">");
 		out.println("<div class=\"row\">");

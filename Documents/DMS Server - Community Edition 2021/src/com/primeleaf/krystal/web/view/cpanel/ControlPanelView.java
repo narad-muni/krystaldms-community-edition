@@ -49,29 +49,39 @@ public class ControlPanelView extends WebView {
 			out.println("<i class=\"bi text-primary bi-speedometer2\"></i> Control Panel");
 			out.println("</div>");
 			
-			out.println("<div class=\"list-group\">");
+			out.println("<div class=\"card-body\"><div class=\"row\">");
 			
-			out.println("<a href=\"/cpanel/users\" class=\"list-group-item\">");
+			out.print("<div class=\"col-sm-4\">");
+			out.println("<a href=\"/cpanel/users\" class=\"card p-3 pt-4\">");
 			out.println("<h5><i class=\"bi text-primary bi-person\"></i> Manage Users</h5>");
 			out.println("</a>");
+			out.print("</div>");
 
-			out.println("<a href=\"/cpanel/managedocumentclasses\"  class=\" list-group-item\">");
+			out.print("<div class=\"col-sm-4\">");
+			out.println("<a href=\"/cpanel/managedocumentclasses\"class=\"card p-3 pt-4\">");
 			out.println("<h5><i class=\"bi text-primary bi-folder2-open\"></i> Manage Document Classes</h5>");
 			out.println("</a>");
+			out.println("</div>");
 
-			out.println("<a href=\"/cpanel/managecheckouts\"  class=\" list-group-item\">");
+			out.print("<div class=\"col-sm-4\">");
+			out.println("<a href=\"/cpanel/managecheckouts\"  class=\"card p-3 pt-4\">");
 			out.println("<h5><i class=\"bi text-primary bi-lock\"></i> Manage Checkouts</h5>");
 			out.println("</a>");
+			out.println("</div>");
 
-			out.println("<a href=\"/cpanel/recyclebin\"  class=\" list-group-item\">");
+			out.print("<div class=\"col-sm-4\">");
+			out.println("<a href=\"/cpanel/recyclebin\"  class=\"card p-3 pt-4\">");
 			out.println("<h5><i class=\"bi text-primary bi-trash\"></i> Recycle Bin</h5>");
 			out.println("</a>");
+			out.println("</div>");
 
-			out.println("<a href=\"/cpanel/reports\" class=\"list-group-item\">");
+			out.print("<div class=\"col-sm-4\">");
+			out.println("<a href=\"/cpanel/reports\" class=\"card p-3 pt-4\">");
 			out.println("<h5><i class=\"bi text-primary bi-bar-chart\"></i> System Reports</h5>");
 			out.println("</a>");
+			out.println("</div>");
 			
-			out.println("</div>");//list-group
+			out.println("</div></div>");//list-group
 			out.println("</div>");//panel
 		}catch(Exception e){
 			e.printStackTrace();
